@@ -1,36 +1,34 @@
 'use client';
 
 import React, { PropsWithChildren } from 'react';
-import { useForm, FieldValues } from 'react-hook-form';
+import { useForm, FieldValues, Path } from 'react-hook-form';
 import { Button } from './Button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormSubmitResponse } from '@/types/app';
-import { assertIsString } from '@/util/asserts';
-import { getFormValidator, ValidatorName } from '@/api/db/validators/util';
+import { ZodSchema } from 'zod';
 
-type FormProps = PropsWithChildren<{
-  onSubmit: (data: unknown) => Promise<FormSubmitResponse>;
-  validatorName: ValidatorName;
+type FormProps<T extends FieldValues> = PropsWithChildren<{
+  onSubmit: (data: T) => Promise<FormSubmitResponse>;
+  validator: ZodSchema<T>;
   submitButtonLabel: string;
 }>;
 
-const FormWrapper = ({
+const FormWrapper = <T extends FieldValues>({
   onSubmit,
-  validatorName,
+  validator,
   children,
   submitButtonLabel,
-}: FormProps) => {
-  const validator = getFormValidator(validatorName);
+}: FormProps<T>) => {
   const {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
     setError,
-  } = useForm({
+  } = useForm<T>({
     resolver: zodResolver(validator),
   });
 
-  const onSubmitHandler = async (values: FieldValues): Promise<void> => {
+  const onSubmitHandler = async (values: T): Promise<void> => {
     const result = await onSubmit(values);
     if (result.error) {
       handleServerErrors(result.error);
@@ -40,7 +38,7 @@ const FormWrapper = ({
   const handleServerErrors = (errors: FormSubmitResponse['error']): void => {
     if (!errors) return;
     Object.keys(errors).forEach((key) => {
-      setError(key, {
+      setError(key as Path<T>, {
         type: 'custom',
         message: errors[key],
       });
@@ -50,12 +48,10 @@ const FormWrapper = ({
   const mapChild = (child: React.ReactNode) => {
     if (React.isValidElement(child)) {
       const fieldName = child.props.name;
-      assertIsString(child.props?.id);
-
       return React.cloneElement(child, {
         ...child.props,
         ...register(fieldName),
-        errorMsg: errors[child.props.id]?.message,
+        errorMsg: errors[child.props.name]?.message,
       });
     }
     return child;
@@ -68,7 +64,7 @@ const FormWrapper = ({
         type='submit'
         buttonLabel={submitButtonLabel}
         loading={isSubmitting}
-        disabled={isSubmitting} // Prevent multiple submissions
+        disabled={isSubmitting}
       />
     </form>
   );

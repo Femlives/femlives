@@ -1,48 +1,47 @@
 'use client';
-import { useState } from 'react';
+
+import { z } from 'zod';
+import { FormSubmitResponse } from '@/types/app';
+import FormWrapper from '@/components/FormWrapper';
+import ConditionWrapper from '@/components/ConditionWrapper';
 import VideoPlayer from '@/components/VideoPlayer';
+import { useState } from 'react';
+
+const videoUrlSchema = z.object({
+  videoUrl: z.string().url('Please enter a valid URL'),
+});
 
 const VideoPrototype = () => {
-  const [srcUrl, setSrcUrl] = useState<string>('');
-  const [inputValue, setInputValue] = useState<string>('');
+  const [videoUrl, setVideoUrl] = useState<string>('');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSrcUrl(inputValue);
+  const handleFormSubmit = async (data: {
+    videoUrl: string;
+  }): Promise<FormSubmitResponse> => {
+    setVideoUrl(data.videoUrl);
+    return { success: true, status: 200 };
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Video Prototype</h1>
+    <div style={{ textAlign: 'center', padding: '20px' }}>
+      <h1>Video Player Prototype</h1>
 
-      <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
-        <label
-          htmlFor='video-url'
-          style={{ display: 'block', marginBottom: '10px' }}
-        >
-          Paste the video URL:
-        </label>
+      <FormWrapper
+        onSubmit={handleFormSubmit}
+        validator={videoUrlSchema}
+        submitButtonLabel='Submit'
+      >
         <input
           type='text'
-          id='video-url'
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          placeholder='Enter video URL here'
-          style={{
-            padding: '10px',
-            width: '300px',
-            marginRight: '10px',
-          }}
+          id='videoUrl'
+          name='videoUrl'
+          placeholder='Enter video URL...'
+          style={{ padding: '10px', width: '300px' }}
         />
-        <button
-          type='submit'
-          style={{ padding: '10px 20px', cursor: 'pointer' }}
-        >
-          Submit
-        </button>
-      </form>
+      </FormWrapper>
 
-      {srcUrl && <VideoPlayer srcUrl={srcUrl} />}
+      <ConditionWrapper condition={!!videoUrl}>
+        <VideoPlayer srcUrl={videoUrl} />
+      </ConditionWrapper>
     </div>
   );
 };

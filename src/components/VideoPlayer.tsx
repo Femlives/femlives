@@ -1,24 +1,22 @@
-'use client';
 import React from 'react';
-import Plyr, { PlyrProps } from 'plyr-react';
-import 'plyr-react/plyr.css';
 
 interface VideoPlayerProps {
   srcUrl: string;
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ srcUrl }) => {
-  const videoOptions: PlyrProps['source'] = {
-    type: 'video',
-    sources: [
-      {
-        src: srcUrl,
-        type: 'video/mp4',
-      },
-    ],
-  };
-
-  return <Plyr source={videoOptions} />;
+  return (
+    <div style={{ textAlign: 'center' }}>
+      <video controls width='600'>
+        {srcUrl ? (
+          <source src={srcUrl} type='video/mp4' />
+        ) : (
+          <p>No video source provided</p>
+        )}
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  );
 };
 
 export default VideoPlayer;
