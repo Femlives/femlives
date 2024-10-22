@@ -16,6 +16,7 @@ export const submitEmailSignUp = async (
     await sendEmailSignUpVerificationEmail(email);
     return {
       status: HttpStatusCode.CREATED,
+      success: true,
     };
   } catch (error) {
     if (error instanceof ZodError) {
@@ -25,6 +26,7 @@ export const submitEmailSignUp = async (
       if (error.message.includes('Email must be unique')) {
         return {
           status: HttpStatusCode.CONFLICT,
+          success: false,
           error: {
             email: 'Email already in use.',
           },
