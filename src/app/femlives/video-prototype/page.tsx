@@ -1,24 +1,24 @@
-'use client';
-
 import { z } from 'zod';
 import { FormSubmitResponse } from '@/types/app';
 import FormWrapper from '@/components/FormWrapper';
-import ConditionWrapper from '@/components/ConditionWrapper';
-import VideoPlayer from '@/components/VideoPlayer';
-import { useState } from 'react';
+//import ConditionWrapper from '@/components/ConditionWrapper';
+//import VideoPlayer from '@/components/VideoPlayer';
+//import { useState } from 'react';
 
 const videoUrlSchema = z.object({
   videoUrl: z.string().url('Please enter a valid URL'),
 });
 
 const VideoPrototype = () => {
-  const [videoUrl, setVideoUrl] = useState<string>('');
+  //  const [videoUrl, setVideoUrl] = useState<string>('');
 
-  const handleFormSubmit = async (data: {
+  const handleFormSubmit = async (_data: {
     videoUrl: string;
   }): Promise<FormSubmitResponse> => {
-    setVideoUrl(data.videoUrl);
-    return { success: true, status: 200 };
+    'use server';
+    const returnValue = { success: true, status: 200 };
+    //setVideoUrl(data.videoUrl);
+    return new Promise(() => returnValue);
   };
 
   return (
@@ -39,9 +39,9 @@ const VideoPrototype = () => {
         />
       </FormWrapper>
 
-      <ConditionWrapper condition={!!videoUrl}>
+      {/* <ConditionWrapper condition={!!videoUrl}>
         <VideoPlayer srcUrl={videoUrl} />
-      </ConditionWrapper>
+      </ConditionWrapper> */}
     </div>
   );
 };
