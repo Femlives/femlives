@@ -3,7 +3,7 @@ import { useState } from 'react';
 import FormWrapper from '@/components/FormWrapper';
 import ConditionWrapper from '@/components/ConditionWrapper';
 import VideoPlayer from '@/components/VideoPlayer';
-import { FormSubmitResponse } from '@/types/app';
+import { ServerActionResponse } from '@/types/app';
 import { ValidatorName } from '@/api/db/validators/util';
 import { HttpStatusCode } from '@/enums';
 import { videoUrlSchema } from '@/api/db/validators/video-url';
@@ -15,7 +15,7 @@ const VideoPrototype = () => {
 
   const handleFormSubmit = async (
     data: unknown
-  ): Promise<FormSubmitResponse> => {
+  ): Promise<ServerActionResponse> => {
     assertIsString(data);
     const decrypted = await readToken<{ videoUrl: string }>(data);
 

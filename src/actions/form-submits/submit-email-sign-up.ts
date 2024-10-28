@@ -4,7 +4,7 @@ import { createEmailAddress } from '@/api/db/email-addresses';
 import { zEmailAddressDto } from '@/api/db/validators';
 import { sendEmailSignUpVerificationEmail } from '../email';
 import { ZodError } from 'zod';
-import { FormSubmitResponse } from '@/types/app';
+import { ServerActionResponse } from '@/types/app';
 import { HttpStatusCode } from '@/enums';
 import { assertIsString } from '@/util/asserts';
 import { readToken } from '../token';
@@ -12,7 +12,7 @@ import { EmailSignupPayload } from '@/types/app/actions/token/payload/email-sign
 
 export const submitEmailSignUp = async (
   data: unknown
-): Promise<FormSubmitResponse> => {
+): Promise<ServerActionResponse> => {
   try {
     assertIsString(data);
 

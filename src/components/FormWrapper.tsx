@@ -4,13 +4,13 @@ import React, { PropsWithChildren } from 'react';
 import { useForm, FieldValues } from 'react-hook-form';
 import { Button } from './Button';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { FormSubmitResponse } from '@/types/app';
+import { ServerActionResponse } from '@/types/app';
 import { assertIsString } from '@/util/asserts';
 import { getFormValidator, ValidatorName } from '@/api/db/validators/util';
 import { generateToken } from '@/actions/token';
 
 type FormProps = PropsWithChildren<{
-  onSubmit: (data: unknown) => Promise<FormSubmitResponse>;
+  onSubmit: (data: unknown) => Promise<ServerActionResponse>;
   validatorName: ValidatorName;
   submitButtonLabel: string;
 }>;
@@ -41,7 +41,7 @@ const FormWrapper = ({
     }
   };
 
-  const handleServerErrors = (errors: FormSubmitResponse['error']): void => {
+  const handleServerErrors = (errors: ServerActionResponse['error']): void => {
     if (!errors) return;
     Object.keys(errors).forEach((key) => {
       setError(key, {
