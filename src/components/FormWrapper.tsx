@@ -1,6 +1,6 @@
 'use client';
 
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, useState } from 'react';
 import { useForm, FieldValues } from 'react-hook-form';
 import { Button } from './Button';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -8,6 +8,7 @@ import { ServerActionResponse } from '@/types/app';
 import { assertIsString } from '@/util/asserts';
 import { getFormValidator, ValidatorName } from '@/api/db/validators/util';
 import { generateToken } from '@/actions/token';
+import ConditionWrapper from './ConditionWrapper';
 
 type FormProps = PropsWithChildren<{
   onSubmit: (data: unknown) => Promise<ServerActionResponse>;
@@ -21,6 +22,8 @@ const FormWrapper = ({
   children,
   submitButtonLabel,
 }: FormProps) => {
+  const [message, setMessage] = useState<string>('');
+
   const validator = getFormValidator(validatorName);
   const {
     handleSubmit,
@@ -38,6 +41,10 @@ const FormWrapper = ({
 
     if (result.error) {
       handleServerErrors(result.error);
+    }
+
+    if (result.message) {
+      setMessage(result.message);
     }
   };
 
@@ -68,12 +75,17 @@ const FormWrapper = ({
   return (
     <form onSubmit={handleSubmit(onSubmitHandler)} className='space-y-4'>
       {React.Children.map(children, (child) => mapChild(child))}
+
       <Button
         type='submit'
         buttonLabel={submitButtonLabel}
         loading={isSubmitting}
         disabled={isSubmitting}
       />
+
+      <ConditionWrapper condition={!!message}>
+        <p>{message}</p>
+      </ConditionWrapper>
     </form>
   );
 };
