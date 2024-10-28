@@ -7,6 +7,8 @@ import { FormSubmitResponse } from '@/types/app';
 import { ValidatorName } from '@/api/db/validators/util';
 import { HttpStatusCode } from '@/enums';
 import { videoUrlSchema } from '@/api/db/validators/video-url';
+import { readToken } from '@/actions/token';
+import { assertIsString } from '@/util/asserts';
 
 const VideoPrototype = () => {
   const [videoUrl, setVideoUrl] = useState<string>('');
@@ -14,7 +16,10 @@ const VideoPrototype = () => {
   const handleFormSubmit = async (
     data: unknown
   ): Promise<FormSubmitResponse> => {
-    const parsedData = videoUrlSchema.safeParse(data);
+    assertIsString(data);
+    const decrypted = await readToken<{ videoUrl: string }>(data);
+
+    const parsedData = videoUrlSchema.safeParse(decrypted);
     if (!parsedData.success) {
       return {
         status: HttpStatusCode.BAD_REQUEST,

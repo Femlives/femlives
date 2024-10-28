@@ -6,14 +6,24 @@ import { sendEmailSignUpVerificationEmail } from '../email';
 import { ZodError } from 'zod';
 import { FormSubmitResponse } from '@/types/app';
 import { HttpStatusCode } from '@/enums';
+import { assertIsString } from '@/util/asserts';
+import { readToken } from '../token';
+import { EmailSignupPayload } from '@/types/app/actions/token/payload/email-signup';
 
 export const submitEmailSignUp = async (
   data: unknown
 ): Promise<FormSubmitResponse> => {
   try {
-    const { email } = zEmailAddressDto.parse(data);
-    await createEmailAddress(email);
-    await sendEmailSignUpVerificationEmail(email);
+    assertIsString(data);
+
+    const decrypted = await readToken<EmailSignupPayload>(data);
+
+    const validated = zEmailAddressDto.parse(decrypted);
+
+    await createEmailAddress(validated);
+
+    await sendEmailSignUpVerificationEmail(validated.email);
+
     return {
       status: HttpStatusCode.CREATED,
     };

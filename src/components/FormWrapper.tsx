@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { FormSubmitResponse } from '@/types/app';
 import { assertIsString } from '@/util/asserts';
 import { getFormValidator, ValidatorName } from '@/api/db/validators/util';
+import { generateToken } from '@/actions/token';
 
 type FormProps = PropsWithChildren<{
   onSubmit: (data: unknown) => Promise<FormSubmitResponse>;
@@ -31,7 +32,10 @@ const FormWrapper = ({
   });
 
   const onSubmitHandler = async (values: FieldValues): Promise<void> => {
-    const result = await onSubmit(values);
+    const encryptedData = await generateToken({ ...values }, '5s');
+
+    const result = await onSubmit(encryptedData);
+
     if (result.error) {
       handleServerErrors(result.error);
     }
