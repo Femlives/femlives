@@ -1,14 +1,15 @@
 'use server';
 
 import { createEmailAddress } from '@/api/db/email-addresses';
-import { zEmailAddressDto } from '@/validators/api';
+
 import { sendEmailSignUpVerificationEmail } from '../email';
 import { ZodError } from 'zod';
-import { ServerActionResponse } from '@/types/app';
+import { ServerActionResponse, EmailSignupPayload } from '@/types/app';
 import { HttpStatusCode } from '@/enums';
 import { assertIsString } from '@/util/asserts';
 import { readToken } from '../token';
-import { EmailSignupPayload } from '@/types/app';
+import { parseDataWithZodValidator, ValidatorName } from '@/validators/app';
+import { EmailAddressDto } from '@/types/api/db';
 
 export const submitEmailSignUp = async (
   data: unknown
@@ -18,7 +19,10 @@ export const submitEmailSignUp = async (
 
     const decrypted = await readToken<EmailSignupPayload>(data);
 
-    const validated = zEmailAddressDto.parse(decrypted);
+    const validated = parseDataWithZodValidator<EmailAddressDto>(
+      decrypted,
+      ValidatorName.EMAIL_ADDRESS
+    );
 
     await createEmailAddress(validated);
 

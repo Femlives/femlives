@@ -9,7 +9,7 @@ import { assertIsString } from '@/util/asserts';
 import { generateToken } from '@/actions/token';
 import ConditionWrapper from './ConditionWrapper';
 import { useRouter } from 'next/navigation';
-import { getFormValidator, ValidatorName } from '@/validators/app';
+import { getFormDataValidator, ValidatorName } from '@/validators/app';
 
 type FormProps = PropsWithChildren<{
   onSubmit: (data: unknown) => Promise<ServerActionResponse>;
@@ -26,7 +26,8 @@ const FormWrapper = ({
   const [message, setMessage] = useState<string>('');
   const router = useRouter();
 
-  const validator = getFormValidator(validatorName);
+  const validator = getFormDataValidator(validatorName);
+
   const {
     handleSubmit,
     register,
