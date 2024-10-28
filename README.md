@@ -12,7 +12,7 @@ A platform dedicated to women's health
 - follow the instructions
   - The device name doesn't really matter, just pick one that makes sense to you
   - open the browser to continue
-  - Use the femlives github account for logging in
+  - Use the Femlives github account for logging in
 
 ### linting
 
