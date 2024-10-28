@@ -3,11 +3,10 @@ import React, { PropsWithChildren } from 'react';
 
 type Props = PropsWithChildren & {
   condition: boolean;
-  children: React.ReactNode;
 };
 
 const ConditionWrapper: FCProps<Props> = ({ condition, children }) => {
-  return condition ? <div>{children}</div> : null;
+  return condition ? <div>{children}</div> : <></>;
 };
 
 export default ConditionWrapper;

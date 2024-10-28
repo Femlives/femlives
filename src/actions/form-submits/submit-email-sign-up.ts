@@ -15,7 +15,6 @@ export const submitEmailSignUp = async (
     await createEmailAddress(email);
     await sendEmailSignUpVerificationEmail(email);
     return {
-      success: true,
       status: HttpStatusCode.CREATED,
     };
   } catch (error) {
@@ -25,7 +24,6 @@ export const submitEmailSignUp = async (
     if (error instanceof Error) {
       if (error.message.includes('Email must be unique')) {
         return {
-          success: false,
           status: HttpStatusCode.CONFLICT,
           error: {
             email: 'Email already in use.',

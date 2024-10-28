@@ -6,6 +6,7 @@ import ConditionWrapper from '@/components/ConditionWrapper';
 import VideoPlayer from '@/components/VideoPlayer';
 import { FormSubmitResponse } from '@/types/app';
 import { ValidatorName } from '@/api/db/validators/util';
+import { HttpStatusCode } from '@/enums';
 
 const videoUrlSchema = z.object({
   videoUrl: z.string().url('Please enter a valid URL'),
@@ -20,14 +21,13 @@ const VideoPrototype = () => {
     const parsedData = videoUrlSchema.safeParse(data);
     if (!parsedData.success) {
       return {
-        success: false,
-        status: 400,
+        status: HttpStatusCode.BAD_REQUEST,
         error: { videoUrl: parsedData.error.message },
       };
     }
 
     setVideoUrl(parsedData.data.videoUrl);
-    return { success: true, status: 200 };
+    return { status: HttpStatusCode.OK };
   };
 
   return (
