@@ -9,6 +9,7 @@ import { assertIsString } from '@/util/asserts';
 import { getFormValidator, ValidatorName } from '@/api/db/validators/util';
 import { generateToken } from '@/actions/token';
 import ConditionWrapper from './ConditionWrapper';
+import { useRouter } from 'next/navigation';
 
 type FormProps = PropsWithChildren<{
   onSubmit: (data: unknown) => Promise<ServerActionResponse>;
@@ -23,6 +24,7 @@ const FormWrapper = ({
   submitButtonLabel,
 }: FormProps) => {
   const [message, setMessage] = useState<string>('');
+  const router = useRouter();
 
   const validator = getFormValidator(validatorName);
   const {
@@ -45,6 +47,10 @@ const FormWrapper = ({
 
     if (result.message) {
       setMessage(result.message);
+    }
+
+    if (result.redirectRoute) {
+      router.push(result.redirectRoute);
     }
   };
 
