@@ -8,7 +8,7 @@ import { ServerActionResponse } from '@/types/app';
 import { HttpStatusCode } from '@/enums';
 import { assertIsString } from '@/util/asserts';
 import { readToken } from '../token';
-import { EmailSignupPayload } from '@/types/app/actions/token/payload/email-signup';
+import { EmailSignupPayload } from '@/types/app';
 
 export const submitEmailSignUp = async (
   data: unknown
@@ -29,7 +29,10 @@ export const submitEmailSignUp = async (
     };
   } catch (error) {
     if (error instanceof ZodError) {
-      throw new Error('Could not validate input data');
+      return {
+        status: HttpStatusCode.BAD_REQUEST,
+        message: 'Could not validate input data',
+      };
     }
     if (error instanceof Error) {
       if (error.message.includes('Email must be unique')) {
@@ -41,6 +44,10 @@ export const submitEmailSignUp = async (
         };
       }
     }
-    throw new Error(`Unknown error during sign up: "${error}"`);
+
+    return {
+      status: HttpStatusCode.INTERNAL_SERVER_ERROR,
+      message: `Unknown error during sign up: "${error}"`,
+    };
   }
 };
