@@ -2,7 +2,7 @@ import {
   zAppEmailAddressData,
   zDbEmailAddressData,
   zEmailAddressDto,
-} from '@/api/db/validators';
+} from '@/validators/api';
 import { z } from 'zod';
 
 /**

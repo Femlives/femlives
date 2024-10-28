@@ -1,4 +1,4 @@
-import { zDbEmailAddressData } from '@/api/db/validators';
+import { zDbEmailAddressData } from '@/validators/api';
 import { zQuery } from '../../helper';
 import { DbTable } from '@/enums';
 import { zid } from 'convex-helpers/server/zod';

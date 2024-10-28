@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { zEmailAddressDto } from '../email-address';
-import { videoUrlSchema } from '../video-url';
+import * as api from '@/validators/api';
+import * as app from '@/validators/app';
 
 export enum ValidatorName {
   EMAIL_ADDRESS = 'emailAddress',
@@ -9,8 +9,8 @@ export enum ValidatorName {
 
 export const getFormValidator = (key: ValidatorName) => {
   const map: Record<ValidatorName, z.ZodTypeAny> = {
-    [ValidatorName.EMAIL_ADDRESS]: zEmailAddressDto,
-    [ValidatorName.VIDEO_URL]: videoUrlSchema,
+    [ValidatorName.EMAIL_ADDRESS]: api.zEmailAddressDto,
+    [ValidatorName.VIDEO_URL]: app.videoUrlSchema,
   };
   if (!map[key]) {
     throw new Error(`validator ${key} not found`);

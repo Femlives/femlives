@@ -1,4 +1,4 @@
-import { zEmailAddressDto } from '@/api/db/validators';
+import { zEmailAddressDto } from '@/validators/api';
 import { zInternalMutation, zMutation } from '../../helper';
 import { DbTable } from '@/enums';
 import { z } from 'zod';

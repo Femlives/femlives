@@ -6,10 +6,10 @@ import { Button } from './Button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ServerActionResponse } from '@/types/app';
 import { assertIsString } from '@/util/asserts';
-import { getFormValidator, ValidatorName } from '@/api/db/validators/util';
 import { generateToken } from '@/actions/token';
 import ConditionWrapper from './ConditionWrapper';
 import { useRouter } from 'next/navigation';
+import { getFormValidator, ValidatorName } from '@/validators/app';
 
 type FormProps = PropsWithChildren<{
   onSubmit: (data: unknown) => Promise<ServerActionResponse>;

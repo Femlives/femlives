@@ -1,7 +1,7 @@
 'use server';
 
 import { createEmailAddress } from '@/api/db/email-addresses';
-import { zEmailAddressDto } from '@/api/db/validators';
+import { zEmailAddressDto } from '@/validators/api';
 import { sendEmailSignUpVerificationEmail } from '../email';
 import { ZodError } from 'zod';
 import { ServerActionResponse } from '@/types/app';

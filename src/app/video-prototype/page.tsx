@@ -4,9 +4,9 @@ import FormWrapper from '@/components/FormWrapper';
 import ConditionWrapper from '@/components/ConditionWrapper';
 import VideoPlayer from '@/components/VideoPlayer';
 import { ServerActionResponse } from '@/types/app';
-import { ValidatorName } from '@/api/db/validators/util';
+import { ValidatorName } from '@/validators/app';
 import { HttpStatusCode } from '@/enums';
-import { videoUrlSchema } from '@/api/db/validators/video-url';
+import { videoUrlSchema } from '@/validators/app/video-url';
 import { readToken } from '@/actions/token';
 import { assertIsString } from '@/util/asserts';
 

@@ -1,4 +1,4 @@
-import { zEmailAddressDto } from '@/api/db/validators';
+import { zEmailAddressDto } from '@/validators/api';
 import { zodToConvex } from 'convex-helpers/server/zod';
 import { defineTable } from 'convex/server';
 
