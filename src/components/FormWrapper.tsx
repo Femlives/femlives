@@ -68,7 +68,7 @@ const FormWrapper = ({
         type='submit'
         buttonLabel={submitButtonLabel}
         loading={isSubmitting}
-        disabled={isSubmitting} // Prevent multiple submissions
+        disabled={isSubmitting}
       />
     </form>
   );
