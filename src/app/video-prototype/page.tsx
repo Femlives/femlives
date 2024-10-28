@@ -1,5 +1,4 @@
 'use client';
-import { z } from 'zod';
 import { useState } from 'react';
 import FormWrapper from '@/components/FormWrapper';
 import ConditionWrapper from '@/components/ConditionWrapper';
@@ -7,10 +6,7 @@ import VideoPlayer from '@/components/VideoPlayer';
 import { FormSubmitResponse } from '@/types/app';
 import { ValidatorName } from '@/api/db/validators/util';
 import { HttpStatusCode } from '@/enums';
-
-const videoUrlSchema = z.object({
-  videoUrl: z.string().url('Please enter a valid URL'),
-});
+import { videoUrlSchema } from '@/api/db/validators/video-url';
 
 const VideoPrototype = () => {
   const [videoUrl, setVideoUrl] = useState<string>('');
