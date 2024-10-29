@@ -1,4 +1,4 @@
-import { zDbEmailAddressData } from '@/api/db/validators';
+import { zEmailAddressDto } from '@/validators/api';
 import { zInternalMutation, zMutation } from '../../helper';
 import { DbTable } from '@/enums';
 import { z } from 'zod';
@@ -6,10 +6,10 @@ import { getEmailAddressByEmail } from './get_email_address';
 import { ConvexError } from 'convex/values';
 import { zid } from 'convex-helpers/server/zod';
 
-const createEmailArgs = zDbEmailAddressData.pick({ email: true }).shape;
+const createEmailArgs = zEmailAddressDto.shape;
 
 export const createEmailAddress = zMutation({
-  args: createEmailArgs,
+  args: zEmailAddressDto.shape,
   output: zid(DbTable.EMAIL_ADDRESSES),
   handler: async (ctx, args) => {
     if (await emailAlreadyInUse(ctx, args)) {

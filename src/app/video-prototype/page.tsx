@@ -3,18 +3,23 @@ import { useState } from 'react';
 import FormWrapper from '@/components/FormWrapper';
 import ConditionWrapper from '@/components/ConditionWrapper';
 import VideoPlayer from '@/components/VideoPlayer';
-import { FormSubmitResponse } from '@/types/app';
-import { ValidatorName } from '@/api/db/validators/util';
+import { ServerActionResponse } from '@/types/app';
+import { ValidatorName } from '@/validators/app';
 import { HttpStatusCode } from '@/enums';
-import { videoUrlSchema } from '@/api/db/validators/video-url';
+import { videoUrlSchema } from '@/validators/app/video-url';
+import { readToken } from '@/actions/token';
+import { assertIsString } from '@/util/asserts';
 
 const VideoPrototype = () => {
   const [videoUrl, setVideoUrl] = useState<string>('');
 
   const handleFormSubmit = async (
     data: unknown
-  ): Promise<FormSubmitResponse> => {
-    const parsedData = videoUrlSchema.safeParse(data);
+  ): Promise<ServerActionResponse> => {
+    assertIsString(data);
+    const decrypted = await readToken<{ videoUrl: string }>(data);
+
+    const parsedData = videoUrlSchema.safeParse(decrypted);
     if (!parsedData.success) {
       return {
         status: HttpStatusCode.BAD_REQUEST,

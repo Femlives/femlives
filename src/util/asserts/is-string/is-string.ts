@@ -1,4 +1,4 @@
-import { isString } from '@/util/app/type-guards';
+import { isString } from '@/util/type-guards';
 
 export const assertIsString: (value: unknown) => asserts value is string = (
   value

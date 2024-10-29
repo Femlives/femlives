@@ -1,15 +1,18 @@
 'use client';
 
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, useState } from 'react';
 import { useForm, FieldValues } from 'react-hook-form';
 import { Button } from './Button';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { FormSubmitResponse } from '@/types/app';
+import { ServerActionResponse } from '@/types/app';
 import { assertIsString } from '@/util/asserts';
-import { getFormValidator, ValidatorName } from '@/api/db/validators/util';
+import { generateToken } from '@/actions/token';
+import ConditionWrapper from './ConditionWrapper';
+import { useRouter } from 'next/navigation';
+import { getFormDataValidator, ValidatorName } from '@/validators/app';
 
 type FormProps = PropsWithChildren<{
-  onSubmit: (data: unknown) => Promise<FormSubmitResponse>;
+  onSubmit: (data: unknown) => Promise<ServerActionResponse>;
   validatorName: ValidatorName;
   submitButtonLabel: string;
 }>;
@@ -20,7 +23,11 @@ const FormWrapper = ({
   children,
   submitButtonLabel,
 }: FormProps) => {
-  const validator = getFormValidator(validatorName);
+  const [message, setMessage] = useState<string>('');
+  const router = useRouter();
+
+  const validator = getFormDataValidator(validatorName);
+
   const {
     handleSubmit,
     register,
@@ -31,13 +38,24 @@ const FormWrapper = ({
   });
 
   const onSubmitHandler = async (values: FieldValues): Promise<void> => {
-    const result = await onSubmit(values);
+    const encryptedData = await generateToken({ ...values }, '5s');
+
+    const result = await onSubmit(encryptedData);
+
     if (result.error) {
       handleServerErrors(result.error);
     }
+
+    if (result.message) {
+      setMessage(result.message);
+    }
+
+    if (result.redirectRoute) {
+      router.push(result.redirectRoute);
+    }
   };
 
-  const handleServerErrors = (errors: FormSubmitResponse['error']): void => {
+  const handleServerErrors = (errors: ServerActionResponse['error']): void => {
     if (!errors) return;
     Object.keys(errors).forEach((key) => {
       setError(key, {
@@ -64,12 +82,17 @@ const FormWrapper = ({
   return (
     <form onSubmit={handleSubmit(onSubmitHandler)} className='space-y-4'>
       {React.Children.map(children, (child) => mapChild(child))}
+
       <Button
         type='submit'
         buttonLabel={submitButtonLabel}
         loading={isSubmitting}
         disabled={isSubmitting}
       />
+
+      <ConditionWrapper condition={!!message}>
+        <p>{message}</p>
+      </ConditionWrapper>
     </form>
   );
 };

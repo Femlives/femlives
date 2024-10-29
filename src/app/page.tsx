@@ -1,5 +1,5 @@
 import { submitEmailSignUp } from '@/actions/form-submits';
-import { ValidatorName } from '@/api/db/validators/util';
+import { ValidatorName } from '@/validators/app';
 import FormWrapper from '@/components/FormWrapper';
 import Input from '@/components/Input';
 
