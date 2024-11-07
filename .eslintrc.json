@@ -1,5 +1,9 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"],
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript",
+    "plugin:eslint-plugin-next-on-pages/recommended"
+  ],
   "rules": {
     "no-process-env": "error",
     "@typescript-eslint/no-unused-vars": [
@@ -9,5 +13,6 @@
     "quotes": ["error", "single", { "allowTemplateLiterals": true }],
     "react-hooks/exhaustive-deps": "off",
     "no-restricted-imports": ["error", ".."]
-  }
+  },
+  "plugins": ["eslint-plugin-next-on-pages"]
 }

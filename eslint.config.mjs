@@ -5,6 +5,7 @@
 import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import customRules from './es-lint-rules/index.mjs'; // Import your custom rule
+import nextOnPages from 'eslint-plugin-next-on-pages';
 
 export default [
   { files: ['**/*'] },
@@ -14,6 +15,7 @@ export default [
   {
     plugins: {
       'custom-rules': customRules,
+      'next-on-pages': nextOnPages,
     },
     rules: {
       '@typescript-eslint/no-unused-vars': [
