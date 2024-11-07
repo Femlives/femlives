@@ -1,3 +1,5 @@
+'server-only';
+
 import { EmailConfig, EmailResponse } from '@/types/api/email';
 import { sendEmail } from './send-email';
 import { EmailSender } from '@/enums';

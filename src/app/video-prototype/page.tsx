@@ -1,4 +1,6 @@
 'use client';
+export const runtime = 'edge';
+
 import { useState } from 'react';
 import FormWrapper from '@/components/FormWrapper';
 import ConditionWrapper from '@/components/ConditionWrapper';

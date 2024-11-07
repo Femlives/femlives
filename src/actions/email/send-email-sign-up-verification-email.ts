@@ -1,3 +1,5 @@
+'use server';
+
 import { resendSendEmailSignUpVerificationEmail } from '@/api/email';
 import { EmailResponse } from '@/types/api/email';
 

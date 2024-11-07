@@ -1,3 +1,5 @@
+'server-only';
+
 import { convexDb, emailAddresses } from '@/api/db/convexDb';
 import { EmailAddressDto } from '@/types/api/db';
 
