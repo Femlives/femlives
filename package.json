@@ -29,7 +29,8 @@
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",
     "resend": "^4.0.0",
-    "server-only": "^0.0.1"
+    "server-only": "^0.0.1",
+    "sharp": "^0.33.5"
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.13.5",
