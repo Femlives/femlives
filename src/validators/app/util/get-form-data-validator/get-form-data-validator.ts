@@ -6,6 +6,18 @@ export const testValidatorZObject = z.object({
   age: z.coerce.number(),
 });
 
+const signUpValidatorZodSchema = z
+  .object({
+    userName: z.string().min(3, 'User name must be at least 3 characters long'),
+    email: z.string().email('Invalid email format'),
+    password: z.string().min(8, 'Password must be at least 8 characters long'),
+    confirmPassword: z.string().min(8),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: 'Passwords do not match',
+    path: ['confirmPassword'],
+  });
+
 export const testValidatorZEffects = z
   .object({
     name: z.string(),
@@ -16,6 +28,7 @@ export const testValidatorZEffects = z
 
 export enum ValidatorName {
   EMAIL_ADDRESS = 'emailAddress',
+  SIGN_UP = 'signUp',
   TEST_Z_EFFECTS = 'testZEffects',
   TEST_Z_OBJECT = 'testZObject',
   VIDEO_URL = 'videoUrl',
@@ -27,6 +40,7 @@ export const getFormDataValidator = (key: ValidatorName) => {
     [ValidatorName.TEST_Z_EFFECTS]: testValidatorZEffects,
     [ValidatorName.EMAIL_ADDRESS]: api.zEmailAddressDto,
     [ValidatorName.VIDEO_URL]: app.videoUrlSchema,
+    [ValidatorName.SIGN_UP]: signUpValidatorZodSchema,
   };
   if (!map[key]) {
     throw new Error(`validator ${key} not found`);
