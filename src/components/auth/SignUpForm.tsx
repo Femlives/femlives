@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { submitSignUp } from '@/actions/auth/sign-up';
 import Input from '@/components/Input';
@@ -19,17 +21,15 @@ const SignUpForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null); // Clear previous errors
+    setError(null);
 
     try {
       const response = await submitSignUp(formData);
 
       if (response.status !== 201) {
-        // Adjust status code as needed
         setError(response.message || 'Sign-up failed');
       } else {
-        // Redirect to verify email page or show success message
-        window.location.href = response.redirectRoute || '/default-redirect'; // Provide a fallback route
+        window.location.href = response.redirectRoute || '/default-redirect';
       }
     } catch (err) {
       setError('An error occurred during sign-up');
