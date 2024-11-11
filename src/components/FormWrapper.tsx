@@ -5,7 +5,7 @@ import { useForm, FieldValues } from 'react-hook-form';
 import { Button } from './Button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ServerActionResponse } from '@/types/app';
-import { generateToken } from '@/actions/token';
+import { generateAuthToken } from '@/actions/token';
 import ConditionWrapper from './ConditionWrapper';
 import { useRouter } from 'next/navigation';
 import {
@@ -43,7 +43,11 @@ const FormWrapper = ({
   });
 
   const onSubmitHandler = async (values: FieldValues): Promise<void> => {
-    const encryptedData = await generateToken({ ...values }, '5s');
+    const encryptedData = await generateAuthToken(
+      { ...values },
+      '5s',
+      'AUTH_TOKEN_SECRET'
+    );
 
     const result = await onSubmit(encryptedData);
 

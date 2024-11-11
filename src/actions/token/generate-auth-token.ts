@@ -5,11 +5,12 @@ import { assertIsString } from '@/util/asserts';
 import { parsedEnv } from '@/util/helper';
 import { SignJWT } from 'jose';
 
-export const generateToken = async <T extends TokenPayload>(
+export const generateAuthToken = async <T extends TokenPayload>(
   payload: T,
-  lifeSpan: TokenLifeSpan
+  lifeSpan: TokenLifeSpan,
+  envKey: keyof typeof parsedEnv
 ): Promise<string> => {
-  const authSecret = parsedEnv.TOKEN_AUTH_SECRET;
+  const authSecret = parsedEnv[envKey];
   assertIsString(authSecret);
   const secret = new TextEncoder().encode(authSecret);
 
