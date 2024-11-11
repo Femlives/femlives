@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { submitSignUp } from '@/actions/auth/sign-up';
 import Input from '@/components/Input';
+import { HttpStatusCode } from '@/enums';
 
 const SignUpForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -26,12 +27,12 @@ const SignUpForm: React.FC = () => {
     try {
       const response = await submitSignUp(formData);
 
-      if (response.status !== 201) {
+      if (response.status !== HttpStatusCode.CREATED) {
         setError(response.message || 'Sign-up failed');
       } else {
         window.location.href = response.redirectRoute || '/default-redirect';
       }
-    } catch (err) {
+    } catch {
       setError('An error occurred during sign-up');
     }
   };
