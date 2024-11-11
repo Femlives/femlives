@@ -5,11 +5,15 @@ import { useForm, FieldValues } from 'react-hook-form';
 import { Button } from './Button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ServerActionResponse } from '@/types/app';
-import { assertIsString } from '@/util/asserts';
 import { generateToken } from '@/actions/token';
 import ConditionWrapper from './ConditionWrapper';
 import { useRouter } from 'next/navigation';
-import { getFormDataValidator, ValidatorName } from '@/validators/app';
+import {
+  getFormDataValidator,
+  getKeysFromZodValidator,
+  ValidatorName,
+} from '@/validators/app';
+import { isString } from '@/util/type-guards';
 
 type FormProps = PropsWithChildren<{
   onSubmit: (data: unknown) => Promise<ServerActionResponse>;
@@ -23,6 +27,7 @@ const FormWrapper = ({
   children,
   submitButtonLabel,
 }: FormProps) => {
+  const [hasRequiredFields, setHasRequiredFields] = useState(false);
   const [message, setMessage] = useState<string>('');
   const router = useRouter();
 
@@ -56,6 +61,7 @@ const FormWrapper = ({
   };
 
   const handleServerErrors = (errors: ServerActionResponse['error']): void => {
+    console.log(errors);
     if (!errors) return;
     Object.keys(errors).forEach((key) => {
       setError(key, {
@@ -67,16 +73,33 @@ const FormWrapper = ({
 
   const mapChild = (child: React.ReactNode) => {
     if (React.isValidElement(child)) {
-      const fieldName = child.props.name;
-      assertIsString(child.props?.id);
+      const validatorKeys = getKeysFromZodValidator(validatorName);
 
-      return React.cloneElement(child, {
-        ...child.props,
-        ...register(fieldName),
-        errorMsg: errors[child.props.id]?.message,
-      });
+      const childId = (child as { props?: { id?: string } })?.props?.id;
+
+      if (isString(childId) && validatorKeys?.includes(childId)) {
+        return mapFormValidationProps(child, childId);
+      }
     }
+
     return child;
+  };
+
+  const mapFormValidationProps = (child: JSX.Element, childId: string) => {
+    const isRequired = child.props.required;
+
+    if (isRequired && !hasRequiredFields) {
+      setHasRequiredFields(true);
+    }
+
+    return {
+      ...child,
+      props: {
+        ...child.props,
+        ...register(childId),
+        errorMsg: errors[childId]?.message,
+      },
+    };
   };
 
   return (

@@ -22,7 +22,6 @@ import type * as helper_index from "../helper/index.js";
 import type * as helper_zod from "../helper/zod.js";
 import type * as tables_email_addresses_table from "../tables/email_addresses_table.js";
 import type * as tables_index from "../tables/index.js";
-import type * as tsconfig from "../tsconfig.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -40,7 +39,6 @@ declare const fullApi: ApiFromModules<{
   "helper/zod": typeof helper_zod;
   "tables/email_addresses_table": typeof tables_email_addresses_table;
   "tables/index": typeof tables_index;
-  tsconfig: typeof tsconfig;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,
