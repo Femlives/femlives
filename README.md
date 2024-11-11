@@ -5,6 +5,9 @@ A platform dedicated to women's health
 ## Setup
 
 - run `npm i`
+- set up env files:
+  - create `.env.local` & `.dev.vars` files in the root directory
+  - copy and paste the variables from our [notion](https://www.notion.so/Accounts-Passwords-8ad522eae5aa4914bde60fd82bf3f28a?pvs=4#5dbfd380c6b4446e9618845a3ee8e057)
 
 ### Convex setup
 
@@ -42,6 +45,8 @@ You can also create branches the classic way without the `issue-id`. In this cas
 ### Code Formatting
 
 We prefer single quotes
+
+---
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
