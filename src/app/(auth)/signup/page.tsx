@@ -3,6 +3,7 @@ import { NextPage } from 'next';
 import FormWrapper from '@/components/FormWrapper';
 import { ServerActionResponse } from '@/types/app';
 import { ValidatorName } from '@/validators/app';
+import Input from '@/components/Input';
 
 const SignUpPage: NextPage = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -21,7 +22,7 @@ const SignUpPage: NextPage = () => {
         validatorName={ValidatorName.SIGN_UP}
         submitButtonLabel='Sign up'
       >
-        {/* <Input
+        <Input
           name='userName'
           id='userName'
           placeholder='User name'
@@ -55,7 +56,7 @@ const SignUpPage: NextPage = () => {
           label='Confirm password'
           type='password'
           required
-        /> */}
+        />
       </FormWrapper>
     </div>
   );
