@@ -56,6 +56,7 @@ const FormWrapper = ({
   };
 
   const handleServerErrors = (errors: ServerActionResponse['error']): void => {
+    console.log(errors);
     if (!errors) return;
     Object.keys(errors).forEach((key) => {
       setError(key, {
