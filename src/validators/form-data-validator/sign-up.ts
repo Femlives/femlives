@@ -11,6 +11,6 @@ export const signUpValidator = z
     confirmPassword: z.string().transform((value) => value),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: 'Passwords don&#39;t match',
+    message: `Passwords don't match`,
     path: ['confirmPassword'],
   });
