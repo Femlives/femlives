@@ -15,8 +15,9 @@ export const dbCreateUser = async (
     userName,
     email,
     passwordHash,
-    emailVerified: EmailVerificationState.VERIFIED,
+    emailVerified: EmailVerificationState.NOT_VERIFIED,
   };
+
   return { status: HttpStatusCode.OK };
   // todo https://github.com/Femlives/femlives/issues/38
   // return await convexDb.mutation(users.createUser, signUpFormData);
