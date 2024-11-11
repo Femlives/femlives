@@ -2,7 +2,6 @@ import 'server-only';
 import { EmailVerificationState, HttpStatusCode } from '@/enums';
 import { SignUpFormData } from '@/types/actions';
 import { encryptPassword } from '@/util/encryption';
-import { convexDb, users } from '../convexDb';
 
 export const dbCreateUser = async (
   data: SignUpFormData
@@ -11,12 +10,14 @@ export const dbCreateUser = async (
 
   const passwordHash = await encryptPassword(password);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const signUpFormData = {
     userName,
     email,
     passwordHash,
     emailVerified: EmailVerificationState.VERIFIED,
   };
-
-  return await convexDb.mutation(users.createUser, signUpFormData);
+  return { status: HttpStatusCode.OK };
+  // todo https://github.com/Femlives/femlives/issues/38
+  // return await convexDb.mutation(users.createUser, signUpFormData);
 };
