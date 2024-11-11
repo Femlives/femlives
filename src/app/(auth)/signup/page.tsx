@@ -1,7 +1,6 @@
 import React from 'react';
 import { NextPage } from 'next';
 import FormWrapper from '@/components/FormWrapper';
-import Input from '@/components/Input';
 import { ServerActionResponse } from '@/types/app';
 import { ValidatorName } from '@/validators/app';
 
