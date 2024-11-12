@@ -51,15 +51,15 @@ const FormWrapper = ({
 
     const result = await onSubmit(encryptedData);
 
-    if (result.error) {
+    if (result?.error) {
       handleServerErrors(result.error);
     }
 
-    if (result.message) {
+    if (result?.message) {
       setMessage(result.message);
     }
 
-    if (result.redirectRoute) {
+    if (result?.redirectRoute) {
       router.push(result.redirectRoute);
     }
   };

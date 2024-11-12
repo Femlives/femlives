@@ -1,5 +1,3 @@
-export const runtime = 'edge';
-
 import Image from 'next/image';
 import logo from '@/assets/femlives-logo.png';
 

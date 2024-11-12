@@ -36,7 +36,6 @@ export const csrfProtection = async (
   }
 
   const setSignatureRes = await setSessionSignature(req);
-
   return setSignatureRes ?? NextResponse.next();
 };
 

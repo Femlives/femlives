@@ -10,7 +10,7 @@ const SignUpPage: NextPage = () => {
   const todoAction = async (data: unknown): Promise<ServerActionResponse> => {
     // https://github.com/Femlives/femlives/issues/43
     'use server';
-    return await { status: 200 };
+    return { status: 200 };
   };
 
   return (
