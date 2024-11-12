@@ -1,3 +1,6 @@
+// edge runtime is needed to work on cloudflare deployment
+export const runtime = 'edge';
+
 export default function NotFound() {
   return (
     <div>

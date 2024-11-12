@@ -1,3 +1,6 @@
+// edge runtime is needed to work on cloudflare deployment
+export const runtime = 'edge';
+
 import type { Metadata } from 'next';
 
 import './globals.css';
