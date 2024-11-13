@@ -5,7 +5,6 @@ import { useForm, FieldValues } from 'react-hook-form';
 import { Button } from './Button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ServerActionResponse } from '@/types/app';
-import { generateAuthToken } from '@/actions/token';
 import ConditionWrapper from './ConditionWrapper';
 import { useRouter } from 'next/navigation';
 import {
@@ -14,9 +13,10 @@ import {
   ValidatorName,
 } from '@/validators/app';
 import { isString } from '@/util/type-guards';
+import { SubmitData } from '@/types/app/submit-data';
 
 type FormProps = PropsWithChildren<{
-  onSubmit: (data: unknown) => Promise<ServerActionResponse>;
+  onSubmit: (data: SubmitData) => Promise<ServerActionResponse>;
   validatorName: ValidatorName;
   submitButtonLabel: string;
 }>;
@@ -43,13 +43,7 @@ const FormWrapper = ({
   });
 
   const onSubmitHandler = async (values: FieldValues): Promise<void> => {
-    const encryptedData = await generateAuthToken(
-      { ...values },
-      '5s',
-      'AUTH_TOKEN_SECRET'
-    );
-
-    const result = await onSubmit(encryptedData);
+    const result = await onSubmit(values);
 
     if (result?.error) {
       handleServerErrors(result.error);

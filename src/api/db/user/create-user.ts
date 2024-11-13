@@ -1,23 +1,25 @@
 import 'server-only';
-import { EmailVerificationState, HttpStatusCode } from '@/enums';
+import { DbTable, EmailVerificationState, HttpStatusCode } from '@/enums';
 import { SignUpFormData } from '@/types/actions';
 import { encryptPassword } from '@/util/encryption';
+import { convexDb, Id, users } from '../convexDb';
 
 export const dbCreateUser = async (
   data: SignUpFormData
-): Promise<{ status: HttpStatusCode }> => {
+): Promise<{
+  status: HttpStatusCode;
+  id: Id<DbTable.USERS>;
+}> => {
   const { email, password, userName } = data;
 
   const passwordHash = await encryptPassword(password);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const signUpFormData = {
     userName,
     email,
     passwordHash,
-    emailVerified: EmailVerificationState.VERIFIED,
+    emailVerified: EmailVerificationState.NOT_VERIFIED,
   };
-  return { status: HttpStatusCode.OK };
-  // todo https://github.com/Femlives/femlives/issues/38
-  // return await convexDb.mutation(users.createUser, signUpFormData);
+
+  return await convexDb.mutation(users.createUser, signUpFormData);
 };

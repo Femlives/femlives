@@ -1,6 +1,7 @@
 'use server';
 
 import { TokenPayload } from '@/types/app';
+import { assertIsString } from '@/util/asserts';
 import { parsedEnv } from '@/util/helper';
 import { jwtVerify } from 'jose';
 import { JOSEError } from 'jose/errors';
@@ -11,6 +12,7 @@ export const readToken = async <T extends TokenPayload>(
 ): Promise<T & { expiresAt: Date; createdAt: Date }> => {
   try {
     const authSecret = parsedEnv[envKey];
+    assertIsString(authSecret);
 
     const secret = new TextEncoder().encode(authSecret);
 
