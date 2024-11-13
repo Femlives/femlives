@@ -24,6 +24,7 @@ export const submitSignUp = async (
       status: HttpStatusCode.CREATED,
     };
   } catch (error) {
+    console.log('>>>>>>>>> | error:', error);
     if (error instanceof ZodError) {
       return {
         status: HttpStatusCode.BAD_REQUEST,
