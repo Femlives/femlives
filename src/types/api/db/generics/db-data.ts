@@ -1,5 +1,5 @@
+import { Id } from '@/api/db/convexDb';
 import { DbTable } from '@/enums';
-import { Id } from '../../../../../convex/_generated/dataModel';
 
 export type DbData<T> = T & {
   _id: Id<DbTable>;
