@@ -9,7 +9,7 @@ export const generateToken = async <T extends TokenPayload>(
   payload: T,
   lifeSpan: TokenLifeSpan
 ): Promise<string> => {
-  const authSecret = parsedEnv.TOKEN_AUTH_SECRET;
+  const authSecret = parsedEnv.AUTH_TOKEN_SECRET;
   assertIsString(authSecret);
   const secret = new TextEncoder().encode(authSecret);
 
