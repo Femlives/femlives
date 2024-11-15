@@ -1,7 +1,7 @@
 'use server';
 
 import { dbCreateUser } from '@/api/db/user/create-user';
-import { HttpStatusCode } from '@/enums';
+import { HttpStatusCode, Route } from '@/enums';
 import { parseDataWithZodValidator } from '@/validators/app';
 import { ServerActionResponse } from '@/types/app';
 import { SubmitData } from '@/types/app/submit-data';
@@ -22,6 +22,7 @@ export const submitSignUp = async (
 
     return {
       status: HttpStatusCode.CREATED,
+      redirectRoute: Route.VERIFY_EMAIL,
     };
   } catch (error) {
     if (error instanceof ZodError) {
