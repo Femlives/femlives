@@ -4,16 +4,17 @@ import { EmailSender } from '@/enums';
 import EmailSignUpVerificationTemplate from '@/components/emails/templates/email-sign-up-verification';
 
 export const resendSendEmailSignUpVerificationEmail = async (
+  token: string,
   userEmail: string
 ): Promise<EmailResponse> => {
-  return await sendEmail(getEmailConfig(userEmail));
+  return await sendEmail(getEmailConfig(token, userEmail));
 };
 
-const getEmailConfig = (email: string): EmailConfig => {
+const getEmailConfig = (email: string, token: string): EmailConfig => {
   return {
     from: EmailSender.INFO,
     to: email,
     subject: 'Femlives - thanks for signing up!',
-    template: EmailSignUpVerificationTemplate({}),
+    template: EmailSignUpVerificationTemplate({ token }),
   };
 };
