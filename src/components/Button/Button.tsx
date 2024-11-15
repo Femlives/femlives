@@ -8,6 +8,7 @@ type ButtonProps = DetailedHTMLProps<
   HTMLButtonElement
 > & {
   buttonLabel: string;
+  url: string;
   loading?: boolean;
 };
 
