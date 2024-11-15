@@ -6,7 +6,7 @@ import { FCProps } from '@/types/app';
 import FormWrapper from '../../../FormWrapper';
 import { Button } from '@/components/Button';
 import { submitRequestNewVerificationEmail } from '@/actions/auth';
-import { ValidatorName } from '@/validators/app/util/get-form-data-validator/get-form-data-validator';
+import { ValidatorName } from '@/validators/app';
 
 type VerifyEmailTemplateProps = {
   token: string;

@@ -2,10 +2,9 @@
 
 import { generateToken } from '../../token';
 import { resendSendEmailSignUpVerificationEmail } from '@/api/email';
-import { ServerActionResponse } from '@/types/app';
+import { ServerActionResponse, VerifyEmailTokenPayload } from '@/types/app';
 import { HttpStatusCode } from '@/enums';
 import { getUserByEmail } from '@/actions/user/get-user';
-import { VerifyEmailTokenPayload } from '@/types/app/actions/token/payload/verify-email';
 
 export const sendEmailVerificationEmail = async (
   userEmail: string
