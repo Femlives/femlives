@@ -2,6 +2,7 @@ import { z } from 'zod';
 import * as api from '@/validators/api';
 import * as app from '@/validators/app';
 import * as formVal from '@/validators/form-data-validator';
+import * as v from '@/validators/form-data-validator';
 export const testValidatorZObject = z.object({
   name: z.string(),
   age: z.coerce.number(),
@@ -20,6 +21,7 @@ export enum ValidatorName {
   SIGN_UP = 'signUp',
   TEST_Z_EFFECTS = 'testZEffects',
   TEST_Z_OBJECT = 'testZObject',
+  VERIFICATION_EMAIL = 'verificationEmail',
   VIDEO_URL = 'videoUrl',
 }
 
@@ -30,6 +32,7 @@ export const getFormDataValidator = (key: ValidatorName) => {
     [ValidatorName.EMAIL_ADDRESS]: api.zEmailAddressDto,
     [ValidatorName.VIDEO_URL]: app.videoUrlSchema,
     [ValidatorName.SIGN_UP]: formVal.signUpValidator,
+    [ValidatorName.VERIFICATION_EMAIL]: v.verificationEmailValidator,
   };
   if (!map[key]) {
     throw new Error(`validator ${key} not found`);
