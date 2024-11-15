@@ -20,6 +20,7 @@ import type * as api_email_addresses_get_email_address from "../api/email_addres
 import type * as api_email_addresses_index from "../api/email_addresses/index.js";
 import type * as helper_index from "../helper/index.js";
 import type * as helper_zod from "../helper/zod.js";
+import type * as http from "../http.js";
 import type * as tables_email_addresses_table from "../tables/email_addresses_table.js";
 import type * as tables_index from "../tables/index.js";
 import type * as tables_users_table from "../tables/users_table.js";
@@ -42,6 +43,7 @@ declare const fullApi: ApiFromModules<{
   "api/email_addresses/index": typeof api_email_addresses_index;
   "helper/index": typeof helper_index;
   "helper/zod": typeof helper_zod;
+  http: typeof http;
   "tables/email_addresses_table": typeof tables_email_addresses_table;
   "tables/index": typeof tables_index;
   "tables/users_table": typeof tables_users_table;
