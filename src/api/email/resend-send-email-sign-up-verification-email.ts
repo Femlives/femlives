@@ -7,7 +7,8 @@ export const resendSendEmailSignUpVerificationEmail = async (
   token: string,
   userEmail: string
 ): Promise<EmailResponse> => {
-  return await sendEmail(getEmailConfig(token, userEmail));
+  const config = getEmailConfig(token, userEmail);
+  return await sendEmail(config);
 };
 
 const getEmailConfig = (email: string, token: string): EmailConfig => {
