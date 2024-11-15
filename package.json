@@ -33,7 +33,7 @@
     "resend": "^4.0.0",
     "server-only": "^0.0.1",
     "sharp": "^0.33.5",
-    "wrangler": "^3.86.1"
+    "wrangler": "^3.87.0"
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.13.5",

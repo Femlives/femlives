@@ -36,7 +36,15 @@ export const csrfProtection = async (
   }
 
   const setSignatureRes = await setSessionSignature(req);
-  return setSignatureRes ?? NextResponse.next();
+  const res = NextResponse.next({
+    request: {
+      headers: new Headers({
+        credentials: 'include',
+      }),
+    },
+  });
+  // console.log('>>>>>>>>> | res:', res.headers);
+  return setSignatureRes ?? res;
 };
 
 const getErrorRes = () => {

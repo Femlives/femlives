@@ -4,8 +4,11 @@ import FormWrapper from '@/components/FormWrapper';
 import { ValidatorName } from '@/validators/app';
 import Input from '@/components/Input';
 import { submitSignUp } from '@/actions/auth/sign-up';
+import { dbGetUserByEmail } from '@/api/db/user/get-user';
 
-const SignUpPage: NextPage = () => {
+const SignUpPage: NextPage = async () => {
+  const user = await dbGetUserByEmail('simonsch.tz@gmail.com');
+  console.log('>>>>>>>>> | user:', user);
   return (
     <div>
       <h1>Sign Up</h1>
