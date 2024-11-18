@@ -3,31 +3,41 @@ import { Crypto } from '@cloudflare/workers-types';
 declare const crypto: Crypto;
 
 export const encryptPassword = async (password: string): Promise<string> => {
+  // Convert password string to buffer
   const encoder = new TextEncoder();
   const data = encoder.encode(password);
-  const salt = crypto.getRandomValues(new Uint8Array(16));
 
+  const randomSalt = crypto.getRandomValues(new Uint8Array(16));
+
+  // Import password as raw key material
   const keyMaterial = await crypto.subtle.importKey(
     'raw',
     data,
-    'PBKDF2',
+    { name: 'PBKDF2' },
     false,
     ['deriveBits']
   );
 
-  const derivedBits = await crypto.subtle.deriveBits(
+  // Derive key using PBKDF2
+  const derivedKey = await crypto.subtle.deriveBits(
     {
       name: 'PBKDF2',
-      salt,
-      iterations: 100000,
+      salt: randomSalt,
+      iterations: 100000, // OWASP recommended minimum
       hash: 'SHA-256',
     },
     keyMaterial,
-    256
+    256 // 32 bytes
   );
 
-  const combined = new Uint8Array([...salt, ...new Uint8Array(derivedBits)]);
-  return Buffer.from(combined).toString('base64');
+  // Combine randomSalt and derived key
+  const combined = new Uint8Array([
+    ...randomSalt,
+    ...new Uint8Array(derivedKey),
+  ]);
+
+  // Convert to base64 for storage
+  return btoa(String.fromCharCode(...combined));
 };
 
 export const verifyPassword = async (
@@ -35,22 +45,26 @@ export const verifyPassword = async (
   hash: string
 ): Promise<boolean> => {
   try {
-    const combined = new Uint8Array(Buffer.from(hash, 'base64'));
+    // Decode the stored hash
+    const combined = Uint8Array.from(atob(hash), (c) => c.charCodeAt(0));
+
+    // Split into salt and key
     const salt = combined.slice(0, 16);
     const storedKey = combined.slice(16);
 
+    // Derive key from input password
     const encoder = new TextEncoder();
     const data = encoder.encode(password);
 
     const keyMaterial = await crypto.subtle.importKey(
       'raw',
       data,
-      'PBKDF2',
+      { name: 'PBKDF2' },
       false,
       ['deriveBits']
     );
 
-    const derivedBits = await crypto.subtle.deriveBits(
+    const derivedKey = await crypto.subtle.deriveBits(
       {
         name: 'PBKDF2',
         salt,
@@ -61,9 +75,8 @@ export const verifyPassword = async (
       256
     );
 
-    const newKey = new Uint8Array(derivedBits);
-
-    if (newKey.length !== storedKey.length) {
+    const newKey = new Uint8Array(derivedKey);
+    if (newKey.byteLength !== storedKey.byteLength) {
       return false;
     }
 
