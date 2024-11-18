@@ -5,6 +5,7 @@ const envValidator = z.object({
   NEXT_PUBLIC_CONVEX_URL: z.string().optional(),
   RESEND_API_KEY: z.string().optional(),
   AUTH_TOKEN_SECRET: z.string().optional(),
+  HOST: z.string().optional(),
 });
 
 //eslint-disable-next-line no-process-env
