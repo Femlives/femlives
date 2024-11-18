@@ -17,6 +17,13 @@ A platform dedicated to women's health
   - open the browser to continue
   - Use the Femlives github account for logging in
 
+### Cloudflare setup
+
+- building on cloudflare is discontinued
+- if you want to experiment further you need to
+  - set up cloudflare pages again
+  - copy .env.local to .dev.vars
+
 ### linting
 
 We have 2 lint checks enforced by hooks
