@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import RequestNewVerificationEmailForm from './request-new-verification-email-form';
 import ConditionWrapper from '@/components/ConditionWrapper';
 import { verifyEmail } from '@/actions/auth/verify-email';
@@ -8,24 +9,36 @@ import { verifyEmail } from '@/actions/auth/verify-email';
 type VerifyEmailVerificationTokenProps = {
   token: string;
 };
+
 const VerifyEmailVerificationToken: React.FC<
   VerifyEmailVerificationTokenProps
 > = ({ token }) => {
   const [error, setError] = useState<string>();
+  const [success, setSuccess] = useState<boolean>(false);
+  const router = useRouter();
 
   useEffect(() => {
     const verify = async () => {
-      const res = await verifyEmail(token);
+      try {
+        const res = await verifyEmail(token);
 
-      if ('message' in res) {
-        setError(res.message);
+        if ('message' in res) {
+          setError(res.message);
+        } else {
+          setSuccess(true);
+          setTimeout(() => {
+            router.push('/login');
+          }, 3000);
+        }
+      } catch (err) {
+        setError('unknown_error');
       }
     };
 
     if (token) {
       verify();
     }
-  }, [token]);
+  }, [token, router]);
 
   return (
     <>
@@ -36,22 +49,24 @@ const VerifyEmailVerificationToken: React.FC<
         </p>
       </ConditionWrapper>
 
-      <ConditionWrapper condition={!!error?.includes('unknown')}>
+      <ConditionWrapper condition={!!error && !error.includes('expired')}>
         <p className='text-center my-5'>
           Something went wrong. If this continues to happen, please contact our
           support.
-          {error}
+          <br />
+          Error: {error}
         </p>
-      </ConditionWrapper>
-
-      <ConditionWrapper condition={!!error}>
         <RequestNewVerificationEmailForm />
       </ConditionWrapper>
 
-      <ConditionWrapper condition={!error}>
+      <ConditionWrapper condition={success}>
         <p className='text-center my-5'>
-          Success! You will be redirected to login in
+          Success! You will be redirected to login in a moment...
         </p>
+      </ConditionWrapper>
+
+      <ConditionWrapper condition={!error && !success}>
+        <p className='text-center my-5'>Verifying your email...</p>
       </ConditionWrapper>
     </>
   );
