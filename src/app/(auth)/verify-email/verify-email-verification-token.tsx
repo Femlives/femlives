@@ -30,7 +30,7 @@ const VerifyEmailVerificationToken: React.FC<
             router.push('/login');
           }, 3000);
         }
-      } catch (err) {
+      } catch {
         setError('unknown_error');
       }
     };
