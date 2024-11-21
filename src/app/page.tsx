@@ -1,11 +1,10 @@
-import { Button } from '@/components/Button';
+import Image from 'next/image';
+import logo from '@/assets/images/fl-logo-big.png';
 
 export default function Home() {
   return (
     <main className='flex flex-col items-center justify-center'>
-      <Button buttonLabel='Login' variant='pink-outlined' />
-      <Button buttonLabel='Take test' variant='blue-filled' />
-      <Button buttonLabel='Take test' variant='pink-filled' />
+      <Image src={logo} alt='Femlives Logo' />
     </main>
   );
 }
