@@ -17,7 +17,10 @@ export const submitEmailSignUp = async (
   try {
     assertIsString(data);
 
-    const decrypted = await readToken<EmailSignupPayload>(data);
+    const decrypted = await readToken<EmailSignupPayload>(
+      data,
+      'AUTH_TOKEN_SECRET'
+    );
 
     const validated = parseDataWithZodValidator<EmailAddressDto>(
       decrypted,
