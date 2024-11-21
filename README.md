@@ -4,6 +4,7 @@ A platform dedicated to women's health
 
 ## Setup
 
+- create a `.env.local` file and copy/paste the contents from [here](https://www.notion.so/Accounts-Passwords-8ad522eae5aa4914bde60fd82bf3f28a?pvs=4#5dbfd380c6b4446e9618845a3ee8e057)
 - run `npm i`
 
 ### Convex setup
@@ -45,22 +46,24 @@ We prefer single quotes
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+### Environment variables and secrets
 
-First, run the development server:
+**_Vercel ENV Variables are the single source of truth for the environment variables._**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Getting started
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- run `npm run dev` to start the next app and the convex dev server simultaneously
+- run `npm run dev:frontend` to start only the next app
+- run `npm run dev:db` to start only the convex db dev server
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Hosting
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Femlives is hosted on Vercel.
+
+- Production: [www.femilves.de](https://www.femilves.de)
+
+### Environment variables and secrets
+
+`development` and `preview` share the same secrets. This means if you develop locally on the db, the changes will be reflected on the preview environment as well.
+
+Even if the secrets of production and other environments are the same, we want to have separate secret entries in Vercel environments. This is to ensure that we can modify the secrets for production separately from the other environments.
