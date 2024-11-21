@@ -6,7 +6,11 @@ const envValidator = z.object({
   RESEND_API_KEY: z.string().optional(),
   AUTH_TOKEN_SECRET: z.string().optional(),
   HOST: z.string().optional(),
+  VERCEL_ENV: z.enum(['production', 'preview', 'development']).optional(),
 });
 
 //eslint-disable-next-line no-process-env
 export const parsedEnv = envValidator.parse(process.env);
+
+//eslint-disable-next-line no-process-env
+export const currentEnv = process.env.NODE_ENV;
