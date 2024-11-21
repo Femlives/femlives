@@ -2,19 +2,14 @@
 
 import Image from 'next/image';
 import logo from '@/assets/images/fl-logo-big.png';
+import { parsedEnv } from '@/util/helper';
 
 export default function Home() {
-  console.log(
-    '>>>>>>>>>>',
-    // eslint-disable-next-line no-process-env
-    process.env.NEXT_PUBLIC_CONVEX_URL,
-    'env:',
-    // eslint-disable-next-line no-process-env
-    process.env.NODE_ENV
-  );
   return (
     <main className='flex flex-col items-center justify-center'>
       <Image src={logo} alt='Femlives Logo' />
+      <p>{parsedEnv.VERCEL_ENV}</p>
+      <p>{parsedEnv.NEXT_PUBLIC_CONVEX_URL}</p>
     </main>
   );
 }
