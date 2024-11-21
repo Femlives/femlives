@@ -7,10 +7,6 @@ on:
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
-    env:
-      CONVEX_DEPLOYMENT: test
-      NEXT_PUBLIC_CONVEX_URL: https://test.com
-      RESEND_API_KEY: test
 
     steps:
       # Checkout the repository

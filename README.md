@@ -62,8 +62,12 @@ Femlives is hosted on Vercel.
 
 - Production: [www.femilves.de](https://www.femilves.de)
 
-### Environment variables and secrets
+### Deployment keys and secrets
 
 `development` and `preview` share the same secrets. This means if you develop locally on the db, the changes will be reflected on the preview environment as well.
 
 Even if the secrets of production and other environments are the same, we want to have separate secret entries in Vercel environments. This is to ensure that we can modify the secrets for production separately from the other environments.
+
+### Deployment
+
+`main` is the production branch for Vercel frontend and is not automatically deployed. Manual deployment is done through the Vercel dashboard. This also automatically triggers a deployment of the convex db.
