@@ -7,6 +7,7 @@ const envValidator = z.object({
   AUTH_TOKEN_SECRET: z.string().optional(),
   HOST: z.string().optional(),
   VERCEL_ENV: z.enum(['production', 'preview', 'development']).optional(),
+  SESSION_SIGNATURE_SECRET: z.string().optional(),
 });
 
 //eslint-disable-next-line no-process-env

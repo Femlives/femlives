@@ -1,6 +1,6 @@
 'server-only';
 
-import { generateToken } from '../../token';
+import { generateAuthToken } from '../../token';
 import { resendSendEmailSignUpVerificationEmail } from '@/api/email';
 import { ServerActionResponse, VerifyEmailTokenPayload } from '@/types/app';
 import { HttpStatusCode } from '@/enums';
@@ -24,10 +24,12 @@ export const sendEmailVerificationEmail = async (
     email,
   } satisfies VerifyEmailTokenPayload;
 
-  const emailVerificationToken = await generateToken<VerifyEmailTokenPayload>(
-    payload,
-    'AUTH_TOKEN_SECRET'
-  );
+  const emailVerificationToken =
+    await generateAuthToken<VerifyEmailTokenPayload>(
+      payload,
+      '7days',
+      'AUTH_TOKEN_SECRET'
+    );
 
   const res = await resendSendEmailSignUpVerificationEmail(
     emailVerificationToken,
