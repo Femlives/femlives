@@ -11,10 +11,14 @@ const config: Config = {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
-        'fl-primary': 'var(--fl-primary)',
+        'pink-primary': 'var(--pink-primary)',
+        'light-pink-secondary': 'var(--light-pink-secondary)',
+        'blue-primary': 'var(--blue-primary)',
+        'text-primary': 'var(--text-primary)',
       },
     },
   },
   plugins: [],
 };
+
 export default config;

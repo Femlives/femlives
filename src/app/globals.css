@@ -5,12 +5,20 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --fl-primary: #fe66c5;
+
+  /* Semantic Color Variables */
+  --pink-primary: #ff66c4;
+  --light-pink-secondary: #fff1ff;
+  --blue-primary: #5271ff;
+  --pink-hover: #fe83cf;
+
+  /* Text Colors */
+  --text-primary: #24091a;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #fff1ff;
     --foreground: #ededed;
   }
 }
