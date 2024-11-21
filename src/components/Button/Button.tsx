@@ -10,6 +10,7 @@ type ButtonProps = DetailedHTMLProps<
   buttonLabel: string;
   variant?: 'pink-filled' | 'blue-filled' | 'pink-outlined';
   loading?: boolean;
+  url?: string;
 };
 
 const Button: FCProps<ButtonProps> = ({
