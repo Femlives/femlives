@@ -13,6 +13,12 @@ type ButtonProps = DetailedHTMLProps<
   url?: string;
 };
 
+const VARIANT_STYLES: Record<string, string> = {
+  'pink-filled': `bg-pink-primary text-text-primary hover:bg-[#FE83CF]`,
+  'blue-filled': `bg-blue-primary text-white`,
+  'pink-outlined': `bg-transparent border border-pink-primary text-text-primary`,
+};
+
 const Button: FCProps<ButtonProps> = ({
   buttonLabel,
   variant = 'pink-filled',
@@ -21,17 +27,8 @@ const Button: FCProps<ButtonProps> = ({
   ...buttonProps
 }) => {
   const baseStyles = `py-2 px-4 rounded-lg w-full font-semibold transition-colors`;
-  const pinkFilledStyles = `bg-pink-primary text-text-primary`;
-  const blueFilledStyles = `bg-blue-primary text-white`;
-  const pinkOutlinedStyles = `bg-transparent border border-pink-primary text-text-primary`;
-  const pinkHoverStyles = `hover:bg-[#FE83CF]`;
 
-  const variantStyles =
-    variant === 'pink-filled'
-      ? `${pinkFilledStyles} ${pinkHoverStyles}`
-      : variant === 'blue-filled'
-        ? blueFilledStyles
-        : pinkOutlinedStyles;
+  const variantStyles = VARIANT_STYLES[variant] || '';
 
   return (
     <button
