@@ -8,12 +8,13 @@
 
   /* Semantic Color Variables */
   --pink-primary: #ff66c4;
-  --light-pink-secondary: #fff1ff;
-  --blue-primary: #5271ff;
+  --pink-secondary-light: #fff1ff;
   --pink-hover: #fe83cf;
+  --pink-dark: #24091a;
+  --blue-primary: #5271ff;
 
   /* Text Colors */
-  --text-primary: #24091a;
+  --text-default: var(--pink-dark);
 }
 
 @media (prefers-color-scheme: dark) {
