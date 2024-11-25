@@ -3,20 +3,23 @@
 import { DetailedHTMLProps, ButtonHTMLAttributes } from 'react';
 import { FCProps } from '@/types/app';
 
+const buttonVariants = {
+  'pink-filled': `bg-pink-default text-text-default hover:bg-pink-button-hover`,
+  'blue-filled': `bg-blue-default text-white`,
+  'pink-outlined': `bg-transparent border border-pink-default text-text-default`,
+  link: `text-text-default`,
+} as const; //  using `as const` to ensure the keys and values are readonly
+
+type Variant = keyof typeof buttonVariants; //now it´s dynamically derives the type of variant from the keys of buttonVariants, so buttonVariants updating automatically
+
 type ButtonProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 > & {
   buttonLabel: string;
-  variant?: 'pink-filled' | 'blue-filled' | 'pink-outlined';
+  variant?: Variant;
   loading?: boolean;
   url?: string;
-};
-
-const VARIANT_STYLES: Record<string, string> = {
-  'pink-filled': `bg-pink-default text-text-default hover:bg-pink-button-hover`,
-  'blue-filled': `bg-blue-default text-white`,
-  'pink-outlined': `bg-transparent border border-pink-default text-text-default`,
 };
 
 const Button: FCProps<ButtonProps> = ({
@@ -28,7 +31,7 @@ const Button: FCProps<ButtonProps> = ({
 }) => {
   const baseStyles = `py-2 px-4 rounded-lg w-full font-semibold transition-colors`;
 
-  const variantStyles = VARIANT_STYLES[variant] || '';
+  const variantStyles = buttonVariants[variant] || '';
 
   return (
     <button
