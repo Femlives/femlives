@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang='en' className='h-full w-full'>
       <body
-        className={`h-full w-full flex flex-col justify-center items-center bg-fl-primary ${dmSans.variable} font-sans font`}
+        className={`h-full w-full flex flex-col justify-center items-center bg-fl-primary ${dmSans.variable} font-sans`}
       >
         {children}
       </body>
