@@ -9,14 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: 'var(--background)', // Matches --background from global.css
-        foreground: 'var(--foreground)', // Matches --foreground from global.css
-        'pink-default': 'var(--pink-default)', // Matches --pink-default
-        'pink-button-hover': 'var(--pink-button-hover)', // Matches --pink-button-hover
-        'pink-lighter': 'var(--pink-lighter)', // Matches --pink-lighter
-        'blue-default': 'var(--blue-default)', // Matches --blue-default
-        'text-default': 'var(--text-default)', // Matches --text-default
-        'black-default': 'var(--black-default)', // Matches --black-default
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        'pink-default': 'var(--pink-default)',
+        'pink-button-hover': 'var(--pink-button-hover)',
+        'pink-lighter': 'var(--pink-lighter)',
+        'blue-default': 'var(--blue-default)',
+        'text-default': 'var(--text-default)',
+        'black-default': 'var(--black-default)',
       },
     },
   },
