@@ -7,20 +7,20 @@
   --foreground: #171717;
 
   /* Semantic Color Variables */
-  --pink-primary: #ff66c4;
-  --pink-secondary-light: #fff1ff;
-  --pink-hover: #fe83cf;
-  --pink-dark: #24091a;
-  --blue-primary: #5271ff;
+  --pink-default: #ff66c4;
+  --pink-button-hover: #fe83cf;
+  --pink-lighter: #fff1ff;
+  --blue-default: #5271ff;
+  --black-default: #24091a;
 
   /* Text Colors */
-  --text-default: var(--pink-dark);
+  --text-default: var(--black-default);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #fff1ff;
-    --foreground: #ededed;
+    --background: #1a1a1a;
+    --foreground: #f5f5f5;
   }
 }
 

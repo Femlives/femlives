@@ -14,9 +14,9 @@ type ButtonProps = DetailedHTMLProps<
 };
 
 const VARIANT_STYLES: Record<string, string> = {
-  'pink-filled': `bg-pink-primary text-text-primary hover:bg-[#FE83CF]`,
-  'blue-filled': `bg-blue-primary text-white`,
-  'pink-outlined': `bg-transparent border border-pink-primary text-text-primary`,
+  'pink-filled': `bg-pink-default text-text-default hover:bg-pink-button-hover`,
+  'blue-filled': `bg-blue-default text-white`,
+  'pink-outlined': `bg-transparent border border-pink-default text-text-default`,
 };
 
 const Button: FCProps<ButtonProps> = ({
