@@ -1,0 +1,41 @@
+:root {
+  /* Font Sizes and Line Heights for Headings */
+  --heading-h1-font-size: 48px;
+  --heading-h1-line-height: 110%;
+  --heading-h2-font-size: 40px;
+  --heading-h2-line-height: 110%;
+  --heading-h3-font-size: 32px;
+  --heading-h3-line-height: 110%;
+  --heading-h4-font-size: 24px;
+  --heading-h4-line-height: 110%;
+  --heading-h5-bold-font-size: 20px;
+  --heading-h5-bold-line-height: 140%;
+  --heading-h5-medium-font-size: 20px;
+  --heading-h5-medium-line-height: 140%;
+  --heading-h6-font-size: 18px;
+  --heading-h6-line-height: 130%;
+
+  /* Font Sizes and Line Heights for Body */
+  --body-semi-bold-font-size: 16px;
+  --body-semi-bold-line-height: 22px;
+  --body-medium-font-size: 16px;
+  --body-medium-line-height: 22px;
+  --body-regular-font-size: 16px;
+  --body-regular-line-height: 21px;
+
+  /* Small and Button */
+  --small-regular-font-size: 12px;
+  --small-regular-line-height: 140%;
+  --button-font-size: 16px;
+  --button-line-height: 100%;
+
+  /* Letter Spacing */
+  --small-letter-spacing: 0.5px;
+
+  /* Font Family */
+  --font-primary: 'DM Sans', sans-serif;
+}
+
+body {
+  font-family: var(--font-primary);
+}
