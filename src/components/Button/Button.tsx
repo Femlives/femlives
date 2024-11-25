@@ -19,6 +19,7 @@ type ButtonProps = DetailedHTMLProps<
   buttonLabel: string;
   variant?: Variant;
   loading?: boolean;
+
   url?: string;
 };
 
@@ -29,15 +30,13 @@ const Button: FCProps<ButtonProps> = ({
   type = 'button',
   ...buttonProps
 }) => {
-  const baseStyles = `py-2 px-4 rounded-lg w-full font-semibold transition-colors`;
-
   const variantStyles = buttonVariants[variant] || '';
 
   return (
     <button
       {...buttonProps}
       type={type}
-      className={`${baseStyles} ${variantStyles}`}
+      className={`${buttonProps.className} ${variantStyles}`}
       disabled={loading || buttonProps.disabled}
     >
       {loading ? 'Loading...' : buttonLabel}
