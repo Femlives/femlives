@@ -11,10 +11,16 @@ const config: Config = {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
-        'fl-primary': 'var(--fl-primary)',
+        'pink-default': 'var(--pink-default)',
+        'pink-button-hover': 'var(--pink-button-hover)',
+        'pink-lighter': 'var(--pink-lighter)',
+        'blue-default': 'var(--blue-default)',
+        'text-default': 'var(--text-default)',
+        'black-default': 'var(--black-default)',
       },
     },
   },
   plugins: [],
 };
+
 export default config;

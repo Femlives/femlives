@@ -5,13 +5,22 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --fl-primary: #fe66c5;
+
+  /* Semantic Color Variables */
+  --pink-default: #ff66c4;
+  --pink-button-hover: #fe83cf;
+  --pink-lighter: #fff1ff;
+  --blue-default: #5271ff;
+  --black-default: #24091a;
+
+  /* Text Colors */
+  --text-default: var(--black-default);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1a1a1a;
+    --foreground: #f5f5f5;
   }
 }
 
