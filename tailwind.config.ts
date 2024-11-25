@@ -13,6 +13,9 @@ const config: Config = {
         foreground: 'var(--foreground)',
         'fl-primary': 'var(--fl-primary)',
       },
+      fontFamily: {
+        sans: 'var(--font-dm-sans)',
+      },
     },
   },
   plugins: [],
