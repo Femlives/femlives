@@ -17,7 +17,10 @@ const VideoPrototype = () => {
     data: unknown
   ): Promise<ServerActionResponse> => {
     assertIsString(data);
-    const decrypted = await readToken<{ videoUrl: string }>(data);
+    const decrypted = await readToken<{ videoUrl: string }>(
+      data,
+      'AUTH_TOKEN_SECRET'
+    );
 
     const parsedData = videoUrlSchema.safeParse(decrypted);
     if (!parsedData.success) {

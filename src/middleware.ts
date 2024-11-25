@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import * as mw from '@/middlewares';
 
 // order is important
-const middleWareFunctionList = [mw.prodProtection];
+const middleWareFunctionList = [mw.prodProtection, mw.csrfProtection];
 
 const composeMiddleware = (
   middlewares: Array<(req: NextRequest) => NextResponse | Promise<NextResponse>>
