@@ -4,6 +4,7 @@ A platform dedicated to women's health
 
 ## Setup
 
+- create a `.env.local` file and copy/paste the contents from [here](https://www.notion.so/Accounts-Passwords-8ad522eae5aa4914bde60fd82bf3f28a?pvs=4#5dbfd380c6b4446e9618845a3ee8e057)
 - run `npm i`
 
 ### Convex setup
@@ -14,6 +15,27 @@ A platform dedicated to women's health
   - open the browser to continue
   - Use the Femlives github account for logging in
 
+### Vercel CLI setup
+
+#### Install and login
+
+Based on [this docs](https://vercel.com/docs/cli)
+
+- run `npm i -g vercel@latest` to install vercel on your machine
+- run `vercel login` to login, easiest should be via femlives github account
+
+#### Link vercel with local project
+
+Based on [this docs](https://vercel.com/docs/cli/project-linking)
+
+- run `vercel`
+  - Set up and deploy? - `Y`
+  - Which scope ...? - hit `enter`
+  - Link to existing project? - `Y`
+  - Name of existing project? - `gfnmjwft` (femlives project name)
+
+## Conventions
+
 ### linting
 
 We have 2 lint checks enforced by hooks
@@ -21,7 +43,11 @@ We have 2 lint checks enforced by hooks
 1. pre-commit: rules can be adjusted here [here](eslint.config.mjs)
 2. pre-push: rules can be adjusted here [here](.eslintrc.json)
 
-## Conventions
+### Code Formatting
+
+We prefer single quotes
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ### Version control workflow
 
@@ -39,28 +65,40 @@ feat/#31/automatic-commit-msg-prefix
 
 You can also create branches the classic way without the `issue-id`. In this case, only the `type` will be prefixed.
 
-### Code Formatting
+## Getting started
 
-We prefer single quotes
+- run `npm run dev` to start the next app and the convex dev server simultaneously
+- run `npm run dev:frontend` to start only the next app
+- run `npm run dev:db` to start only the convex db dev server
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Hosting
 
-## Getting Started
+Femlives is hosted on Vercel.
 
-First, run the development server:
+- Production: [www.femilves.de](https://www.femilves.de)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Environment variables and secrets
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Vercel ENV Variables are the single source of truth for the environment variables.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`development` and `preview` share the same secrets. This means if you develop locally on the db, the changes will be reflected on the preview environment as well.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Even if the secrets of production and other environments are the same, we want to have separate secret entries in Vercel environments. This is to ensure that we can modify the secrets for production separately from the other environments.
+
+## Deployment
+
+Automatic deployments of the `main` branch are disabled. Previews are deployed automatically when branches are pushed to github.
+
+### Preview/Development
+
+On Vercel, all branches accept of `main` are automatically deployed when they get pushed to github.
+The Convex DB is automatically deployed during development, when the development server is running (`npm run dev:db`).
+
+### Production
+
+Recommended workflow:
+
+- set up and login to Vercel CLI (see [Vercel CLI setup](#vercel-cli-setup))
+- login to Convex DB in terminal (see [Convex DB setup](#convex-setup))
+- make sure you are on the branch you want to deploy (usually `main`)
+- run `npm run deploy:prod`
