@@ -13,7 +13,10 @@
     "db:login": "npx convex login",
     "prepare": "husky",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "vercel:deploy:prod": "vercel --prod",
+    "db:deploy:prod": "npx convex deploy",
+    "deploy:prod": "npm run db:deploy:prod && npm run vercel:deploy:prod"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
