@@ -18,6 +18,9 @@ const config: Config = {
         'text-default': 'var(--text-default)',
         'black-default': 'var(--black-default)',
       },
+      fontFamily: {
+        sans: 'var(--font-dm-sans)',
+      },
     },
   },
   plugins: [],
