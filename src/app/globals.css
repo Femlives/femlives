@@ -3,15 +3,40 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-
-  /* Semantic Color Variables */
-  --pink-default: #ff66c4;
-  --pink-button-hover: #fe83cf;
+  /* Pink Shades */
+  --primary: #ff66c4;
+  --pink-light: #ffb2e1;
   --pink-lighter: #fff1ff;
-  --blue-default: #5271ff;
+
+  /* Button States */
+  --pink-button-hover: #fe83cf;
+  --pink-button-disabled: #e4acce;
+
+  /* Blue Shades */
+  --secondary: #5271ff;
+  --blue-light: #a8ceff;
+  --blue-lighter: #bfd8ff;
+  --blue-lightest: #dfedff;
+
+  /* Lime Shades */
+  --ternary: #959618;
+  --lime-light: #dfe080;
+  --lime-lighter: #f6f8dd;
+
+  /* Red Shades */
+  --danger: #e5291f;
+  --red-button-hover: #f03845;
+  --red-button-disabled: #cb6065;
+
+  /* Gray Shades */
+  --gray-light: #dddde2;
+  --gray-button-disabled: #ededed;
+
+  /* Black and White */
   --black-default: #24091a;
+  --black-hover: #532542;
+  --black-disabled: #875f77;
+  --white-default: #ffffff;
 
   /* Text Colors */
   --text-default: var(--black-default);

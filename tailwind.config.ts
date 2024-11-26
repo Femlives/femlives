@@ -9,14 +9,43 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
-        'pink-default': 'var(--pink-default)',
-        'pink-button-hover': 'var(--pink-button-hover)',
+        /* Pink Shades */
+        primary: 'var(--primary)',
+        'pink-light': 'var(--pink-light)',
         'pink-lighter': 'var(--pink-lighter)',
-        'blue-default': 'var(--blue-default)',
-        'text-default': 'var(--text-default)',
+
+        /* Button States */
+        'pink-button-hover': 'var(--pink-button-hover)',
+        'pink-button-disabled': 'var(--pink-button-disabled)',
+
+        /* Blue Shades */
+        secondary: 'var(--secondary)',
+        'blue-light': 'var(--blue-light)',
+        'blue-lighter': 'var(--blue-lighter)',
+        'blue-lightest': 'var(--blue-lightest)',
+
+        /* Lime Shades */
+        ternary: 'var(--ternary)',
+        'lime-light': 'var(--lime-light)',
+        'lime-lighter': 'var(--lime-lighter)',
+
+        /* Red Shades */
+        danger: 'var(--danger)',
+        'red-button-hover': 'var(--red-button-hover)',
+        'red-button-disabled': 'var(--red-button-disabled)',
+
+        /* Gray Shades */
+        'gray-light': 'var(--gray-light)',
+        'gray-button-disabled': 'var(--gray-button-disabled)',
+
+        /* Black and White */
         'black-default': 'var(--black-default)',
+        'black-hover': 'var(--black-hover)',
+        'black-disabled': 'var(--black-disabled)',
+        'white-default': 'var(--white-default)',
+
+        /* Text Colors */
+        'text-default': 'var(--text-default)',
       },
     },
   },
