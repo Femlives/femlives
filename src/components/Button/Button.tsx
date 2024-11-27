@@ -4,9 +4,9 @@ import { DetailedHTMLProps, ButtonHTMLAttributes } from 'react';
 import { FCProps } from '@/types/app';
 
 const buttonVariants = {
-  'pink-filled': `bg-primary text-text-default hover:bg-primary-button-hover`,
-  'blue-filled': `bg-secondary text-white`,
-  'pink-outlined': `bg-transparent border border-primary text-text-default`,
+  'primary-filled': ` text-text-default bg-primary hover:bg-primary-button-hover`,
+  'primary-outlined': `bg-white-default border border-primary text-text-default  hover:bg-primary-button-hover`,
+  'secondary-filled': `bg-secondary text-white`,
   link: `text-text-default`,
 } as const; //  using `as const` to ensure the keys and values are readonly
 
@@ -25,18 +25,19 @@ type ButtonProps = DetailedHTMLProps<
 
 const Button: FCProps<ButtonProps> = ({
   buttonLabel,
-  variant = 'pink-filled',
+  variant = 'primary-filled',
   loading = false,
   type = 'button',
   ...buttonProps
 }) => {
   const variantStyles = buttonVariants[variant] || '';
+  const generalStyles = 'px-3 py-2 rounded-lg';
 
   return (
     <button
       {...buttonProps}
       type={type}
-      className={`${buttonProps.className} ${variantStyles}`}
+      className={`${generalStyles} ${variantStyles} ${buttonProps.className}`}
       disabled={loading || buttonProps.disabled}
     >
       {loading ? 'Loading...' : buttonLabel}
