@@ -4,9 +4,9 @@ import { DetailedHTMLProps, ButtonHTMLAttributes } from 'react';
 import { FCProps } from '@/types/app';
 
 const buttonVariants = {
-  'pink-filled': `bg-primary text-text-default hover:bg-pink-button-hover`,
+  'pink-filled': `bg-primary text-text-default hover:bg-primary-button-hover`,
   'blue-filled': `bg-secondary text-white`,
-  'pink-outlined': `bg-transparent border border-pink-default text-text-default`,
+  'pink-outlined': `bg-transparent border border-primary text-text-default`,
   link: `text-text-default`,
 } as const; //  using `as const` to ensure the keys and values are readonly
 
