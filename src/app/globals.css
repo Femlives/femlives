@@ -27,12 +27,10 @@
   --gray-light: #dddde2;
   --gray-button-disabled: #ededed;
 
-  --black-default: #24091a;
+  --black: #24091a;
   --black-hover: #532542;
   --black-disabled: #875f77;
-  --white-default: #fffffe;
-
-  --text-default: var(--black-default);
+  --white: #fffffe;
 }
 
 @media (prefers-color-scheme: dark) {
