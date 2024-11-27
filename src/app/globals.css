@@ -3,42 +3,34 @@
 @tailwind utilities;
 
 :root {
-  /* Pink Shades */
   --primary: #ff66c4;
   --primary-light: #ffb2e1;
   --primary-lighter: #fff1ff;
 
-  /* Button States */
   --primary-button-hover: #fe83cf;
   --primary-button-disabled: #e4acce;
 
-  /* Blue Shades */
   --secondary: #5271ff;
   --secondary-light: #a8ceff;
   --secondary-lighter: #bfd8ff;
   --secondary-lightest: #dfedff;
 
-  /* Lime Shades */
   --ternary: #959618;
   --ternary-light: #dfe080;
   --ternary-lighter: #f6f8dd;
 
-  /* Red Shades */
   --danger: #e5291f;
   --danger-button-hover: #f03845;
   --danger-button-disabled: #cb6065;
 
-  /* Gray Shades */
   --gray-light: #dddde2;
   --gray-button-disabled: #ededed;
 
-  /* Black and White */
   --black-default: #24091a;
   --black-hover: #532542;
   --black-disabled: #875f77;
   --white-default: #ffffff;
 
-  /* Text Colors */
   --text-default: var(--black-default);
 }
 
