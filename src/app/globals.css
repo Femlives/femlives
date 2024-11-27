@@ -29,7 +29,7 @@
   --black-default: #24091a;
   --black-hover: #532542;
   --black-disabled: #875f77;
-  --white-default: #ffffff;
+  --white-default: #fffffe;
 
   --text-default: var(--black-default);
 }
