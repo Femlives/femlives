@@ -5,7 +5,7 @@ import logo from '../../public/images/femlives-logo.svg';
 import { Button } from './Button';
 const Header: FCProps = () => {
   return (
-    <header className='w-full px-36 py-4 bg-quinary flex justify-between items-center'>
+    <header className='w-full px-36 py-4 bg-quinary flex justify-between items-center sticky top-0'>
       <Image src={logo} alt='Femlives Logo' />
       <div className='flex gap-4'>
         <Button
