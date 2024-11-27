@@ -15,9 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className='xy-full'>
-      <body
-        className={`xy-full flex-center flex-col bg-fl-primary ${dmSans.variable} font-sans`}
-      >
+      <body className={`bg-white-default ${dmSans.variable} font-sans`}>
         {children}
       </body>
     </html>
