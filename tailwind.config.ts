@@ -25,6 +25,8 @@ const config: Config = {
         'ternary-light': 'var(--ternary-light)',
         'ternary-lighter': 'var(--ternary-lighter)',
 
+        quinary: 'var(--quinary)',
+
         danger: 'var(--danger)',
         'ternary-button-hover': 'var(--danger-button-hover)',
         'ternary-button-disabled': 'var(--danger-button-disabled)',
@@ -32,12 +34,10 @@ const config: Config = {
         'gray-light': 'var(--gray-light)',
         'gray-button-disabled': 'var(--gray-button-disabled)',
 
-        'black-default': 'var(--black-default)',
+        black: 'var(--black)',
         'black-hover': 'var(--black-hover)',
         'black-disabled': 'var(--black-disabled)',
-        'white-default': 'var(--white-default)',
-
-        'text-default': 'var(--text-default)',
+        white: 'var(--white)',
       },
       fontFamily: {
         sans: 'var(--font-dm-sans)',
