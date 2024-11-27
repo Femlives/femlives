@@ -11,28 +11,28 @@ const config: Config = {
       colors: {
         /* Pink Shades */
         primary: 'var(--primary)',
-        'pink-light': 'var(--pink-light)',
-        'pink-lighter': 'var(--pink-lighter)',
+        'primary-light': 'var(--primary-light)',
+        'primary-lighter': 'var(--primary-lighter)',
 
         /* Button States */
-        'pink-button-hover': 'var(--pink-button-hover)',
-        'pink-button-disabled': 'var(--pink-button-disabled)',
+        'primary-button-hover': 'var(--primary-button-hover)',
+        'primary-button-disabled': 'var(--primary-button-disabled)',
 
         /* Blue Shades */
         secondary: 'var(--secondary)',
-        'blue-light': 'var(--blue-light)',
-        'blue-lighter': 'var(--blue-lighter)',
-        'blue-lightest': 'var(--blue-lightest)',
+        'secondary-light': 'var(--secondary-light)',
+        'secondary-lighter': 'var(--secondary-lighter)',
+        'secondary-lightest': 'var(--secondary-lightest)',
 
         /* Lime Shades */
         ternary: 'var(--ternary)',
-        'lime-light': 'var(--lime-light)',
-        'lime-lighter': 'var(--lime-lighter)',
+        'ternary-light': 'var(--ternary-light)',
+        'ternary-lighter': 'var(--ternary-lighter)',
 
         /* Red Shades */
         danger: 'var(--danger)',
-        'red-button-hover': 'var(--red-button-hover)',
-        'red-button-disabled': 'var(--red-button-disabled)',
+        'ternary-button-hover': 'var(--danger-button-hover)',
+        'ternary-button-disabled': 'var(--danger-button-disabled)',
 
         /* Gray Shades */
         'gray-light': 'var(--gray-light)',

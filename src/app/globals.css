@@ -5,28 +5,28 @@
 :root {
   /* Pink Shades */
   --primary: #ff66c4;
-  --pink-light: #ffb2e1;
-  --pink-lighter: #fff1ff;
+  --primary-light: #ffb2e1;
+  --primary-lighter: #fff1ff;
 
   /* Button States */
-  --pink-button-hover: #fe83cf;
-  --pink-button-disabled: #e4acce;
+  --primary-button-hover: #fe83cf;
+  --primary-button-disabled: #e4acce;
 
   /* Blue Shades */
   --secondary: #5271ff;
-  --blue-light: #a8ceff;
-  --blue-lighter: #bfd8ff;
-  --blue-lightest: #dfedff;
+  --secondary-light: #a8ceff;
+  --secondary-lighter: #bfd8ff;
+  --secondary-lightest: #dfedff;
 
   /* Lime Shades */
   --ternary: #959618;
-  --lime-light: #dfe080;
-  --lime-lighter: #f6f8dd;
+  --ternary-light: #dfe080;
+  --ternary-lighter: #f6f8dd;
 
   /* Red Shades */
   --danger: #e5291f;
-  --red-button-hover: #f03845;
-  --red-button-disabled: #cb6065;
+  --danger-button-hover: #f03845;
+  --danger-button-disabled: #cb6065;
 
   /* Gray Shades */
   --gray-light: #dddde2;
