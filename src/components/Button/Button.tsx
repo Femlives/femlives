@@ -7,7 +7,7 @@ const buttonVariants = {
   'primary-filled': `text-black bg-primary hover:bg-primary-button-hover`,
   'primary-outlined': `bg-white border border-primary text-black hover:bg-primary-button-hover`,
   'secondary-filled': `bg-secondary text-white`,
-  link: `text-black`,
+  link: `text-black hover:underline`,
 } as const; //  using `as const` to ensure the keys and values are readonly
 
 type Variant = keyof typeof buttonVariants; //now it´s dynamically derives the type of variant from the keys of buttonVariants, so buttonVariants updating automatically
