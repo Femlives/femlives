@@ -6,7 +6,6 @@
   --primary: #ff66c4;
   --primary-light: #ffb2e1;
   --primary-lighter: #fff1ff;
-
   --primary-button-hover: #fe83cf;
   --primary-button-disabled: #e4acce;
 
@@ -18,6 +17,8 @@
   --ternary: #959618;
   --ternary-light: #dfe080;
   --ternary-lighter: #f6f8dd;
+
+  --quinary: #ffeddf;
 
   --danger: #e5291f;
   --danger-button-hover: #f03845;

@@ -25,6 +25,8 @@ const config: Config = {
         'ternary-light': 'var(--ternary-light)',
         'ternary-lighter': 'var(--ternary-lighter)',
 
+        quinary: 'var(--quinary)',
+
         danger: 'var(--danger)',
         'ternary-button-hover': 'var(--danger-button-hover)',
         'ternary-button-disabled': 'var(--danger-button-disabled)',
