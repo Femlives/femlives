@@ -1,12 +1,38 @@
-import AppLink from './AppLink';
-import { Route } from '@/enums';
+import { FCProps } from '@/types/app';
+import Image from 'next/image';
 
-const Footer = () => {
+import logo from '../../public/images/femlives-logo.svg';
+
+const Footer: FCProps = () => {
   return (
-    <div className='flex gap-10 h-56 justify-center items-center'>
-      <AppLink label={'Terms of Service'} internalRoute={Route.GTC} />
-      <AppLink label={'Imprint'} internalRoute={Route.IMPRINT} />
-    </div>
+    <footer className="w-full bg-quinary-default flex flex-col items-center gap-8 py-12">
+      <Image src={logo} alt="Femlives Logo" width={179} height={30.4} className="mb-4" />
+
+      <nav>
+        <ul className="flex items-start gap-[90px] text-lg text-black font-bold">
+          <li>
+            <a >
+              Terms of Service
+            </a>
+          </li>
+          <li>
+            <a>
+              Privacy Policy
+            </a>
+          </li>
+          <li>
+            <a>
+              About us
+            </a>
+          </li>
+          <li>
+            <a>
+              Get in touch
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </footer>
   );
 };
 
