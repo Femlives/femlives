@@ -8,7 +8,7 @@ type Props = {
   iconName: IconName;
 };
 
-const Icon: FCProps<Props> = ({ iconName, ...props }) => {
+export const Icon: FCProps<Props> = ({ iconName, ...props }) => {
   const icon = icons[iconName];
 
   return (
@@ -18,5 +18,3 @@ const Icon: FCProps<Props> = ({ iconName, ...props }) => {
     </>
   );
 };
-
-export default Icon;
