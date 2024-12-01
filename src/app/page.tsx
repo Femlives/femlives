@@ -7,7 +7,7 @@ import {
 
 export default function Home() {
   return (
-    <main className='relative'>
+    <main>
       <Header />
       <HeroSection />
       <MenopauseStagesSection />
