@@ -10,6 +10,9 @@ export const HeroSection: FCProps = () => {
   return (
     <div className={`flex items-center px-36 py-32 ${heroImageStyles}`}>
       <div
+        style={{
+          background: 'rgba(255, 255, 255, 0.5)',
+        }}
         className={`p-6 rounded-3xl backdrop-blur-xl text-black ${h2WithPaddingWidth} flex flex-col gap-8`}
       >
         <div className='flex flex-col gap-2'>
