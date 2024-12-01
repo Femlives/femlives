@@ -9,6 +9,6 @@
     "quotes": ["error", "single", { "allowTemplateLiterals": true }],
     "react-hooks/exhaustive-deps": "off",
     "no-restricted-imports": ["error", ".."],
-    "import/no-absolute-path": ["warn", { "ignore": ["/public/**"] }]
+    "import/no-absolute-path": ["warn", { "ignore": ["^/public/.*"] }]
   }
 }
