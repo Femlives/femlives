@@ -1,3 +1,4 @@
+import { H1, H2 } from '@/components';
 import { FCProps } from '@/types/app';
 
 export const HeroSection: FCProps = () => {
@@ -12,9 +13,8 @@ export const HeroSection: FCProps = () => {
         className={`p-6 rounded-3xl backdrop-blur-xl text-black ${h2WithPaddingWidth} flex flex-col gap-8`}
       >
         <div className='flex flex-col gap-2 font-bold'>
-          <h1 className='text-5xl'>Wechseljahre:</h1>
-
-          <h2 className='text-4xl'>informiert & selbstbewusst</h2>
+          <H1 text='Wechseljahre' />
+          <H2 text='informiert & selbstbewusst' />
         </div>
 
         <p className='text-xl'>
