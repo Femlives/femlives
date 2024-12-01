@@ -60,6 +60,7 @@ export const MenopauseStagesSection: FCProps = () => {
           {getMenuItems()}
         </menu>
       </div>
+      {!!activeStage && <div>{activeStage.description}</div>}
     </div>
   );
 };
