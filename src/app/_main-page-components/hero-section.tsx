@@ -12,7 +12,7 @@ export const HeroSection: FCProps = () => {
       <div
         className={`p-6 rounded-3xl backdrop-blur-xl text-black ${h2WithPaddingWidth} flex flex-col gap-8`}
       >
-        <div className='flex flex-col gap-2 font-bold'>
+        <div className='flex flex-col gap-2'>
           <H1 text='Wechseljahre' />
           <H2 text='informiert & selbstbewusst' />
         </div>

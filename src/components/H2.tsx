@@ -4,7 +4,7 @@ type Props = HeadingProps & { text: string };
 
 export const H2: FCProps<Props> = ({ text, ...props }) => {
   return (
-    <h2 className={`text-4xl ${props.className}`} {...props}>
+    <h2 className={`text-4xl font-bold ${props.className}`} {...props}>
       {text}
     </h2>
   );
