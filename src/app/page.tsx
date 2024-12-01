@@ -1,11 +1,12 @@
 import Header from '@/components/Header';
-import { HeroSection } from './main-page-components';
+import { HeroSection, MenopauseStagesSection } from './_main-page-components';
 
 export default function Home() {
   return (
     <main>
       <Header />
       <HeroSection />
+      <MenopauseStagesSection />
     </main>
   );
 }

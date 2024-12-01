@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { dmSans } from './fonts';
+import { dmSans } from './_fonts';
 // import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {

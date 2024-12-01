@@ -18,6 +18,10 @@
   --ternary-light: #dfe080;
   --ternary-lighter: #f6f8dd;
 
+  --quaternary: #19b3b2;
+  --quaternary-light: #b3e6e5;
+  --quaternary-lighter: #e6f7f6;
+
   --quinary: #ffeddf;
 
   --danger: #e5291f;
@@ -31,19 +35,6 @@
   --black-hover: #532542;
   --black-disabled: #875f77;
   --white: #fffffe;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #1a1a1a;
-    --foreground: #f5f5f5;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
