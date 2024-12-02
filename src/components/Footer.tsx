@@ -5,8 +5,8 @@ import logo from '../../public/images/femlives-logo.svg';
 
 const Footer: FCProps = () => {
   return (
-    <footer className="w-full bg-quinary-default flex flex-col items-center gap-8 py-12">
-      <Image src={logo} alt="Femlives Logo"  className="mb-4" />
+    <footer className="w-full bg-quinary-default flex-center flex-col items-center gap-8 py-12">
+      <Image src={logo} alt="Femlives Logo"/>
 
       <nav>
         <ul className="flex items-start gap-[90px] text-lg text-black font-bold">
