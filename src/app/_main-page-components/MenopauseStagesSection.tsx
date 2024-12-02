@@ -15,7 +15,7 @@ export const MenopauseStagesSection: FCProps = () => {
 
   const renderMenuItems = () => {
     return menopauseStages.map((stage, index) => (
-      <>
+      <div key={stage.title} className='flex items-center'>
         <MenuItem
           key={stage.title}
           stage={stage}
@@ -25,14 +25,14 @@ export const MenopauseStagesSection: FCProps = () => {
         {index !== menopauseStages.length - 1 && (
           <div className='text-gray-light w-px h-4 bg-gray-light' aria-hidden />
         )}
-      </>
+      </div>
     ));
   };
 
   return (
     <Section className='bg-white flex-center flex-col gap-8'>
       <div className='bg-quaternary-lighter p-6 rounded-3xl w-fit'>
-        <menu className='flex items-center bg-white border border-gray-light rounded-lg p-1'>
+        <menu className=' flex w-fit bg-white border border-gray-light rounded-lg p-1'>
           {renderMenuItems()}
         </menu>
       </div>

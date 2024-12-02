@@ -1,3 +1,3 @@
-export * from './hero-section';
-export * from './menopause-stages-section';
-export * from './stats-section';
+export * from './HeroSection';
+export * from './MenopauseStagesSection';
+export * from './stats-section/StatsSection';
