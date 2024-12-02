@@ -1,4 +1,4 @@
-import { H2 } from '@/components';
+import { H2, Section } from '@/components';
 import { FCProps } from '@/types/app';
 
 type Stat = {
@@ -13,7 +13,7 @@ export const StatsSection: FCProps = () => {
   };
 
   return (
-    <div className='bg-white px-36 py-12 flex justify-between '>
+    <Section className='bg-white flex justify-between '>
       <div className='max-w-[460px] h-fit'>
         <H2
           text={`Menopause Symptoms:\nCommon & Manageable`}
@@ -28,7 +28,7 @@ export const StatsSection: FCProps = () => {
       </div>
 
       <div className='max-w-[460px] flex flex-col gap-8'>{renderStats()}</div>
-    </div>
+    </Section>
   );
 };
 
