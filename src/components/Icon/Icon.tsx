@@ -10,11 +10,14 @@ type Props = {
 
 export const Icon: FCProps<Props> = ({ iconName, ...props }) => {
   const icon = icons[iconName];
-
   return (
     <>
-      {icon && icon(props)}
-      {!icon && <FallbackIcon {...props} width={16} />}
+      {!icon ||
+        (iconName === 'FallbackIcon' ? (
+          <FallbackIcon {...props} width={16} height={16} />
+        ) : (
+          icon(props)
+        ))}
     </>
   );
 };
