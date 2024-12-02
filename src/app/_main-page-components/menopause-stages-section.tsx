@@ -1,6 +1,6 @@
 'use client';
 
-import { H3 } from '@/components';
+import { H3, Section } from '@/components';
 import { FCProps, SetAction } from '@/types/app';
 import { useState } from 'react';
 
@@ -30,7 +30,7 @@ export const MenopauseStagesSection: FCProps = () => {
   };
 
   return (
-    <div className='bg-white py-10 flex-center flex-col gap-8'>
+    <Section className='bg-white flex-center flex-col gap-8'>
       <div className='bg-quaternary-lighter p-6 rounded-3xl w-fit'>
         <menu className='flex items-center bg-white border border-gray-light rounded-lg p-1'>
           {renderMenuItems()}
@@ -38,7 +38,7 @@ export const MenopauseStagesSection: FCProps = () => {
       </div>
 
       {!!activeStage && <DescriptionSection stage={activeStage} />}
-    </div>
+    </Section>
   );
 };
 

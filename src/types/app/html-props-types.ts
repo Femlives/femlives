@@ -4,3 +4,8 @@ export type HeadingProps = DetailedHTMLProps<
   HTMLAttributes<HTMLHeadingElement>,
   HTMLHeadingElement
 >;
+
+export type SectionProps = DetailedHTMLProps<
+  HTMLAttributes<HTMLElement>,
+  HTMLElement
+>;

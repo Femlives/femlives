@@ -1,4 +1,4 @@
-import { H1, H2 } from '@/components';
+import { Section, H1, H2 } from '@/components';
 import { FCProps } from '@/types/app';
 
 export const HeroSection: FCProps = () => {
@@ -8,7 +8,7 @@ export const HeroSection: FCProps = () => {
   const h2WithPaddingWidth = 'max-w-[528px]';
 
   return (
-    <div className={`flex items-center px-36 py-32 ${heroImageStyles}`}>
+    <Section className={`flex items-center !py-32 ${heroImageStyles}`}>
       <div
         style={{
           background: 'rgba(255, 255, 255, 0.5)',
@@ -25,6 +25,6 @@ export const HeroSection: FCProps = () => {
           Analysen und Expertinnenwissen
         </p>
       </div>
-    </div>
+    </Section>
   );
 };
