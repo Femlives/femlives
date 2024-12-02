@@ -5,7 +5,7 @@ import Image from 'next/image';
 import logo from '/public/images/femlives-logo.svg';
 import { Button } from './Button';
 
-const Header: FCProps = () => {
+export const Header: FCProps = () => {
   return (
     <header className='w-full px-36 py-4 bg-quinary flex justify-between items-center flex-wrap sticky top-0 z-10'>
       <Image src={logo} alt='Femlives Logo' />
@@ -29,5 +29,3 @@ const Header: FCProps = () => {
     </header>
   );
 };
-
-export default Header;
