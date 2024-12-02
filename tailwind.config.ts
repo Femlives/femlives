@@ -25,6 +25,10 @@ const config: Config = {
         'ternary-light': 'var(--ternary-light)',
         'ternary-lighter': 'var(--ternary-lighter)',
 
+        quaternary: 'var(--quaternary)',
+        'quaternary-light': 'var(--quaternary-light)',
+        'quaternary-lighter': 'var(--quaternary-lighter)',
+
         quinary: 'var(--quinary)',
 
         danger: 'var(--danger)',
