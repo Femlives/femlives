@@ -1,12 +1,17 @@
-'use client';
-
-import Image from 'next/image';
-import logo from '@/assets/images/fl-logo-big.png';
+import { Header } from '@/components';
+import {
+  HeroSection,
+  MenopauseStagesSection,
+  StatsSection,
+} from './_main-page-components';
 
 export default function Home() {
   return (
-    <main className='flex flex-col items-center justify-center'>
-      <Image src={logo} alt='Femlives Logo' />
+    <main>
+      <Header />
+      <HeroSection />
+      <MenopauseStagesSection />
+      <StatsSection />
     </main>
   );
 }

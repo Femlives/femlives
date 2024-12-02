@@ -2,12 +2,11 @@
 
 import { dbCreateUser } from '@/api/db/user/create-user';
 import { HttpStatusCode, Route } from '@/enums';
-import { parseDataWithZodValidator } from '@/validators/app';
+import { parseDataWithZodValidator, ValidatorName } from '@/validators/app';
 import { ServerActionResponse } from '@/types/app';
 import { SubmitData } from '@/types/app/submit-data';
 import { SignUpFormData } from '@/types/actions';
 import { ZodError } from 'zod';
-import { ValidatorName } from '@/validators/app';
 
 export const submitSignUp = async (
   data: SubmitData

@@ -3,26 +3,53 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --fl-primary: #fe66c5;
-}
+  --primary: #ff66c4;
+  --primary-light: #ffb2e1;
+  --primary-lighter: #fff1ff;
+  --primary-button-hover: #fe83cf;
+  --primary-button-disabled: #e4acce;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+  --secondary: #5271ff;
+  --secondary-light: #a8ceff;
+  --secondary-lighter: #bfd8ff;
+  --secondary-lightest: #dfedff;
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  --ternary: #959618;
+  --ternary-light: #dfe080;
+  --ternary-lighter: #f6f8dd;
+
+  --quaternary: #19b3b2;
+  --quaternary-light: #b3e6e5;
+  --quaternary-lighter: #e6f7f6;
+
+  --quinary: #ffeddf;
+
+  --danger: #e5291f;
+  --danger-button-hover: #f03845;
+  --danger-button-disabled: #cb6065;
+
+  --gray-light: #dddde2;
+  --gray-button-disabled: #ededed;
+
+  --black: #24091a;
+  --black-hover: #532542;
+  --black-disabled: #875f77;
+  --white: #fffffe;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.xy-full {
+  width: 100%;
+  height: 100%;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
