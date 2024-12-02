@@ -1,3 +1,4 @@
+import FAQ from '@/components/FAQ';
 import Header from '@/components/Header';
 import {
   HeroSection,
@@ -12,6 +13,7 @@ export default function Home() {
       <HeroSection />
       <MenopauseStagesSection />
       <StatsSection />
+      <FAQ/>
     </main>
   );
 }
