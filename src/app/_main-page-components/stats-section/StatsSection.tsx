@@ -1,5 +1,6 @@
 import { H2, Section } from '@/components';
 import { FCProps } from '@/types/app';
+import { StatsHeading } from './StatsHeading';
 
 type Stat = {
   heading: string;
@@ -36,7 +37,7 @@ const StatCard: FCProps<Stat> = ({ heading, subheading, description }) => {
   return (
     <div className='flex flex-col '>
       <div>
-        <H2 text={heading} />
+        <StatsHeading heading={heading} />
         <p>{subheading}</p>
       </div>
       <p className='text-tertiary mt-6'>{description}</p>
