@@ -1,16 +1,18 @@
 import { encryptPassword } from './encrypt-passwords';
 
 describe('encryptPassword', () => {
-  it('Should only accept strings', () => {
+  it('Should only accept strings', async () => {
     const noString = 123 as unknown as string;
-    expect(encryptPassword(noString)).rejects.toThrow();
+    await expect(encryptPassword(noString)).rejects.toThrow();
   });
-  it('Should return a string', () => {
+  it('Should return a string', async () => {
     const password = 'password';
-    expect(encryptPassword(password)).resolves.toEqual(expect.any(String));
+    await expect(encryptPassword(password)).resolves.toEqual(
+      expect.any(String)
+    );
   });
-  it('Should not return the same string', () => {
+  it('Should not return the same string', async () => {
     const password = 'password';
-    expect(encryptPassword(password)).not.toBe(password);
+    await expect(encryptPassword(password)).not.toBe(password);
   });
 });
