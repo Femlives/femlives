@@ -5,24 +5,28 @@ import AppLink from './AppLink';
 import { Route } from '@/enums';
 
 const Footer: FCProps = () => {
+  const links = [
+    { label: 'Terms of Service', route: Route.GTC },
+    { label: 'Privacy Policy', route: Route.PRIVACY_POLICY },
+    { label: 'About Us', route: Route.ABOUT_US },
+    { label: 'Get in Touch', route: Route.CONTACT_US },
+  ];
+
   return (
     <footer className="w-full bg-quinary-default flex-center flex-col items-center gap-8 py-12">
-      <Image src={logo} alt="Femlives Logo"/>
+      <Image src={logo} alt="Femlives Logo" />
 
       <nav>
         <ul className="flex items-start gap-16 text-lg text-black font-bold">
-        <li>
-            <AppLink label="Terms of Service" className="no-underline text-black hover:text-primary" internalRoute={Route.GTC} />
-          </li>
-          <li>
-            <AppLink label="Privacy Policy" className="no-underline text-black hover:text-primary" internalRoute={Route.PRIVACY_POLICY} />
-          </li>
-          <li>
-            <AppLink label="About Us" className="no-underline text-black hover:text-primary" internalRoute={Route.ABOUT_US} />
-          </li>
-          <li>
-            <AppLink label="Get in Touch" className="no-underline text-black hover:text-primary" internalRoute={Route.CONTACT_US} />
-          </li>
+          {links.map(({ label, route }, index) => (
+            <li key={index}>
+              <AppLink
+                label={label}
+                className="no-underline text-black hover:text-primary"
+                internalRoute={route}
+              />
+            </li>
+          ))}
         </ul>
       </nav>
     </footer>

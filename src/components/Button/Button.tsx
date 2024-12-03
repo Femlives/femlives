@@ -25,7 +25,7 @@ type ButtonProps = DetailedHTMLProps<
   iconRight?: IconName;
 };
 
-const Button: FCProps<ButtonProps> = ({
+export const Button: FCProps<ButtonProps> = ({
   buttonLabel,
   variant = 'primary-filled',
   loading = false,
@@ -52,5 +52,3 @@ const Button: FCProps<ButtonProps> = ({
     </button>
   );
 };
-
-export default Button;

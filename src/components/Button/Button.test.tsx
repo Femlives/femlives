@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Button from './Button';
+import { Button } from './Button';
 
 describe('Button component', () => {
   it('Should not be clickable when disabled', () => {

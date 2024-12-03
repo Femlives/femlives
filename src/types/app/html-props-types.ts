@@ -9,3 +9,8 @@ export type SectionProps = DetailedHTMLProps<
   HTMLAttributes<HTMLElement>,
   HTMLElement
 >;
+
+export type DivProps = DetailedHTMLProps<
+  HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>;
