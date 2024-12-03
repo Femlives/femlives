@@ -4,7 +4,7 @@ import logo from '../../public/images/femlives-logo.svg';
 import AppLink from './AppLink';
 import { Route } from '@/enums';
 
-const Footer: FCProps = () => {
+export const Footer: FCProps = () => {
   const links = [
     { label: 'Terms of Service', route: Route.GTC },
     { label: 'Privacy Policy', route: Route.PRIVACY_POLICY },
@@ -33,4 +33,3 @@ const Footer: FCProps = () => {
   );
 };
 
-export default Footer;

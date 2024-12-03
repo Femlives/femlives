@@ -1,5 +1,4 @@
-import Footer from '@/components/Footer';
-import { Header } from '@/components';
+import { Header, Footer} from '@/components';
 import {
   HeroSection,
   MenopauseStagesSection,
